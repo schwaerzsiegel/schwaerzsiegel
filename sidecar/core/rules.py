@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from datetime import date as _date
 from typing import Callable
 
 from core import validators as v
@@ -39,15 +40,29 @@ NAME_WORD = rf"[{_UPPER}][{_LOWER}]+(?![{_LOWER}])(?:-[{_UPPER}][{_LOWER}]+(?![{
 # Muster Org.-Z.“ das Organisationszeichen); Satzzeichen danach („Becker.“, „Becker,“) bleiben erlaubt.
 NAME = rf"{NAME_WORD}(?: (?:von |van |de |zu |vom |von der )?{NAME_WORD}){{0,3}}(?!\.[\w\-])"
 MONTHS = "Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember"
-DATE = rf"\d{{1,2}}\. ?\d{{1,2}}\. ?(?:19|20)?\d{{2}}(?!\d)|\d{{1,2}}\. ?(?:{MONTHS}) (?:19|20)\d{{2}}"
+DATE = (rf"\d{{1,2}}\. ?\d{{1,2}}\. ?(?:19|20)?\d{{2}}(?!\d)|\d{{1,2}}\. ?(?:{MONTHS}) (?:19|20)\d{{2}}"
+        # Phase 17c: "14/07/1990", "14-07-1990" (nur mit vierstelligem Jahr) und "1990-07-14"
+        rf"|(?<![\d/\-])\d{{1,2}}/\d{{1,2}}/(?:19|20)\d{{2}}(?![\d/\-])"
+        rf"|(?<![\d/\-])\d{{1,2}}-\d{{1,2}}-(?:19|20)\d{{2}}(?![\d/\-])"
+        rf"|(?<![\d/\-])(?:19|20)\d{{2}}-\d{{2}}-\d{{2}}(?![\d/\-])")
 CITY = rf"[{_UPPER}][{_LOWER}]+(?:(?: | ?- ?)(?:am |an der |im |bei |ob der |in der )?[{_UPPER}][{_LOWER}]+)*"
-STREET = (rf"(?:[{_UPPER}][\w\-]*?(?:straße|strasse|str\.|weg|gasse|allee|platz|ring|damm|ufer|chaussee|steig|pfad)"
+# Phase 17c: auch norddeutsche Straßennamen ("Lütt Moor", "Holtenauer Koppel", "Am Redder")
+# Vorangestelltes Beiwort gehört zum Straßennamen ("Lütt Moor", "Kieler Straße", "Holtenauer Koppel")
+_STREET_PREFIX = (rf"(?:Lütt|Lüttje|Groß|Große|Großer|Klein|Kleine|Kleiner|Alte|Alter|Neue|Neuer|Hohe|Hoher|Lange|"
+                  rf"Langer|Kurze|Kurzer|Breite|Breiter|Obere|Untere|Achter de|Op de|Op'n|Bi de|An de|Sankt|St\.|"
+                  rf"[{_UPPER}][{_LOWER}]+er) ")
+_STREET_WORD = r"(?:Straße|Strasse|Weg|Gasse|Allee|Platz|Ring|Damm|Ufer|Koppel|Kamp|Redder|Twiete|Stieg|Hörn|Deich|Wall|Markt|Busch|Winkel|Brook|Moor|Kai)"
+STREET = (rf"(?:(?:{_STREET_PREFIX})?[{_UPPER}][\w\-]*?(?:straße|strasse|[sS]tr\.|weg|gasse|allee|platz|ring|damm|ufer"
+          r"|chaussee|steig|pfad|koppel|kamp|redder|twiete|stieg|hörn|deich|wall|markt|busch|winkel|brook|moor|kai)"
+          rf"|{_STREET_PREFIX}{_STREET_WORD}"
           rf"|(?:Am|An der|An den|Im|In der|Auf dem|Auf der|Zum|Zur|Unter den) [{_UPPER}][{_LOWER}]+)"
           r" \d{1,4} ?[a-zA-Z]?(?![\w])")
 PLZ_CITY = rf"(?<![\d\w])\d{{5}} {CITY}"
 PHONE_VALUE = r"(?:\+|\(?0)[\d ()/.\-]{4,}\d"
-UNLABELED_PHONE = (r"(?<![\w.+/\-])(?:\+49 ?(?:\(0\) ?)?\d{2,5}|\(0\d{2,5}\)|0\d{2,5})"
-                   r"(?: ?[/\-] ?| )(?:\d{5,}|\d{3} \d{3,5})(?![\w.])")
+UNLABELED_PHONE = (r"(?<![\w.+/\-])(?:(?:\+49 ?(?:\(0\) ?)?\d{2,5}|\(0\d{2,5}\)|0\d{2,5})"
+                   r"(?: ?[/\-] ?| )(?:\d{5,}|\d{3} \d{3,5})"
+                   # Phase 17c: Handynummer ohne Trennzeichen ("01701234567", "+4915112345678")
+                   r"|(?:0|\+49 ?)1[5-7]\d{8,9})(?![\w.])")
 EMAIL = r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
 IBAN_VALUE = r"[A-Z]{2}\d{2}(?: ?[A-Z0-9]{1,4}){3,8}"
 REST_OF_LINE = rf"[^\n]+?(?=(?: [{_UPPER}][\w.\-]*:)|\n|$)"
@@ -202,6 +217,21 @@ def _compile(rule: ContextRule) -> list[re.Pattern]:
 _COMPILED = [(rule, _compile(rule)) for rule in CONTEXT_RULES]
 # "geboren am 3. Mai 1979 in Kiel" - der Ort steht hinter dem Datum
 _BIRTHPLACE_AFTER_DATE = re.compile(rf"(?i:geb(?:oren|\.)?)(?: am)?:? ?(?:{DATE}) in (?P<value>{CITY})")
+def _year(date_text: str) -> int:
+    """Jahr eines Datums nach DATE ("14/07/1990", "3. Mai 1979", "12.05.80")."""
+    full = re.search(r"(?<!\d)(?:19|20)\d{2}(?!\d)", date_text)
+    if full:
+        return int(full.group())
+    yy = int(re.findall(r"\d+", date_text)[-1][-2:])
+    return 2000 + yy if yy <= _date.today().year % 100 else 1900 + yy
+
+
+# Phase 17c: Lebenslauf ohne Beschriftung - eine Zeile nur "14/07/1990 in Musterdorf" (Datum eines Erwachsenen)
+_CV_BIRTH = re.compile(rf"(?m)^[ \t]*(?P<date>{DATE}) in (?P<place>{CITY})[ \t]*$")
+# Phase 17c: Straße ohne bekannte Endung, wenn direkt danach Postleitzahl und Ort folgen
+_STREET_BEFORE_PLZ = re.compile(
+    rf"(?m)(?<![\w\-])(?P<value>[{_UPPER}][\w\-]*\.?(?:[ \t][\w\-']+\.?){{0,3}}[ \t]\d{{1,4}}[ \t]?[a-zA-Z]?)"
+    rf"(?![\w])(?:[ \t]*,[ \t]*|[ \t]*\n[ \t]*)(?={PLZ_CITY})")
 # Phase 17: Hinweis hinter dem Datum: "ist am 02.02.2024 verstorben", "wurde am 12.05.1980 in Kiel geboren"
 _DATE_BEFORE_HINT = [
     (label, re.compile(rf"(?P<value>{DATE})(?: (?:in|im|zu) {CITY})?(?: [a-zäöüß]+){{0,2}} (?i:{hint})(?![{_LOWER}])"))
@@ -277,6 +307,21 @@ def context_hits(text: str) -> list[Hit]:
         for m in pattern.finditer(text):
             hits.append(Hit(label, m.start("value"), m.end("value"), 0.9, PRIO_CONTEXT,
                             f"Kontext „… {m.group().rsplit(' ', 1)[-1]}“"))
+    for m in _CV_BIRTH.finditer(text):
+        if 1920 <= _year(m.group("date")) <= _date.today().year - 14:
+            hits.append(Hit("Geburtsdatum", m.start("date"), m.end("date"), 0.8, PRIO_CONTEXT,
+                            "Lebenslauf: Datum mit Ort in eigener Zeile"))
+            hits.append(Hit("Geburtsort", m.start("place"), m.end("place"), 0.8, PRIO_CONTEXT,
+                            "Lebenslauf: Ort hinter dem Geburtsdatum"))
+    for m in _STREET_BEFORE_PLZ.finditer(text):
+        # Format, kein Kontext: Rang wie die übrigen Anschriften; Anschrift einer Organisation wie dort
+        line_start, line_end = _line_of(text, m.start())
+        if _ORGANISATION.search(text[line_start:line_end]):
+            hits.append(Hit("Firmenanschrift", m.start("value"), m.end("value"), 0.6, PRIO_STRUCTURE,
+                            "Anschrift einer Organisation"))
+        else:
+            hits.append(Hit("Adresse", m.start("value"), m.end("value"), 0.85, PRIO_STRUCTURE,
+                            "Straße + Hausnummer vor Postleitzahl und Ort"))
     return hits + org_zeichen_hits(text) + sole_trader_hits(text)
 
 

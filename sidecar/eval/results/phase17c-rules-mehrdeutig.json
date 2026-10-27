@@ -1,0 +1,1298 @@
+{
+ "mode": "rules",
+ "seed": 2026,
+ "corpus": "mehrdeutig",
+ "documents": 50,
+ "seconds": 0.8,
+ "micro": {
+  "tp": 20,
+  "fn": 130,
+  "fp": 31,
+  "precision": 0.39215686274509803,
+  "recall": 0.13333333333333333,
+  "f1": 0.19900497512437812
+ },
+ "coverage": 0.18106995884773663,
+ "selection": {
+  "tp": 20,
+  "fn": 130,
+  "fp": 31,
+  "precision": 0.39215686274509803,
+  "recall": 0.13333333333333333,
+  "f1": 0.19900497512437812
+ },
+ "selection_false": [
+  {
+   "doc": "m_telefonliste-01",
+   "text": "+49 221 33439496",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-01",
+   "text": "+49 221 162394",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-02",
+   "text": "0341 14457463",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-02",
+   "text": "+49 40 69749599",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-03",
+   "text": "0221 72249863",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-03",
+   "text": "040 882973",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-04",
+   "text": "+49 (0)221 78726786",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-04",
+   "text": "+49 30 7658167",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-05",
+   "text": "(0221) 267 2162",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-05",
+   "text": "040 5259929",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-06",
+   "text": "+49 431 66495996",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-06",
+   "text": "+49 431 17811838",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-07",
+   "text": "+49 221 8929355",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-07",
+   "text": "0221 679191",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-08",
+   "text": "0341 33492448",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-08",
+   "text": "+49 (0)221 29726923",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-09",
+   "text": "+49 (0)40 36376748",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-09",
+   "text": "0221 1932723",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-10",
+   "text": "040-72463233",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-10",
+   "text": "(0431) 748 98871",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-01",
+   "text": "(030) 836 667",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-02",
+   "text": "+49 (0)89 621581",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-03",
+   "text": "0221 86859989",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-04",
+   "text": "089-73143699",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-05",
+   "text": "+49 (0)30 18125895",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-06",
+   "text": "0431-242411",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-07",
+   "text": "(040) 196 71474",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-08",
+   "text": "0431-964694",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-09",
+   "text": "+49 (0)341 2211635",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-10",
+   "text": "+49 (0)221 979527",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "seit Wochen.",
+   "label": "Gesundheitsdaten",
+   "llm": null
+  }
+ ],
+ "per_category": {
+  "person": {
+   "tp": 0,
+   "fn": 90,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "adresse": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "telefon": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 30,
+   "precision": 0.4,
+   "recall": 1.0,
+   "f1": 0.5714285714285715
+  },
+  "email": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "geburtsdatum": {
+   "tp": 0,
+   "fn": 20,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "geburtsort": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "personalnummer": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "iban": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "sv_nummer": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "steuer_id": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "kv_nummer": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "gesundheit": {
+   "tp": 0,
+   "fn": 20,
+   "fp": 1,
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {},
+ "missed": [
+  {
+   "doc": "m_geburtstag-01",
+   "text": "Jonas Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-01",
+   "text": "17.09.1991",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-02",
+   "text": "Piotr Wagner",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-02",
+   "text": "10.05.1950",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-03",
+   "text": "Ben Dietrich",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-03",
+   "text": "11.11.1969",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-04",
+   "text": "Mia Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-04",
+   "text": "10.10.1967",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-05",
+   "text": "Lukas Mustermann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-05",
+   "text": "14.10.1958",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-06",
+   "text": "Hannah Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-06",
+   "text": "02.12.1987",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-07",
+   "text": "Noah Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-07",
+   "text": "24.03.1977",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-08",
+   "text": "Clara Haas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-08",
+   "text": "08.08.1992",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-09",
+   "text": "Max Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-09",
+   "text": "28.01.1967",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-10",
+   "text": "Elias Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_geburtstag-10",
+   "text": "10.12.1973",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_telefonliste-01",
+   "text": "Max Haas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_telefonliste-02",
+   "text": "Sophie Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_telefonliste-03",
+   "text": "Hannah Kowalski",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_telefonliste-04",
+   "text": "Erika Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_telefonliste-05",
+   "text": "Max Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_telefonliste-06",
+   "text": "Felix Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_telefonliste-07",
+   "text": "Jonas Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_telefonliste-08",
+   "text": "Max Mustermann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_telefonliste-09",
+   "text": "Marie Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_telefonliste-10",
+   "text": "Mia Haas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-01",
+   "text": "Erika",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-01",
+   "text": "Asthma bronchiale",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-01",
+   "text": "Lena Vogel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-02",
+   "text": "Lukas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-02",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-02",
+   "text": "Sophie Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-03",
+   "text": "Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-03",
+   "text": "Migräne",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-03",
+   "text": "Ben Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-04",
+   "text": "Jonas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-04",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-04",
+   "text": "Ben Beispiel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-05",
+   "text": "Olga",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-05",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-05",
+   "text": "Max Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-06",
+   "text": "Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-06",
+   "text": "Depressive Episode",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-06",
+   "text": "Sophie Mustermann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-07",
+   "text": "Lena",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-07",
+   "text": "Depressive Episode",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-07",
+   "text": "Ben Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-08",
+   "text": "Lukas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-08",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-08",
+   "text": "Paul Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-09",
+   "text": "Olga",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-09",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-09",
+   "text": "Aylin Krüger",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-10",
+   "text": "Chiara",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-10",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-10",
+   "text": "Chiara Haas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-01",
+   "text": "Felix Dietrich",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-01",
+   "text": "14.09.1987",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-01",
+   "text": "Felix",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-02",
+   "text": "Jonas Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-02",
+   "text": "10.08.1958",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-02",
+   "text": "Jonas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-03",
+   "text": "Chiara Vogel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-03",
+   "text": "27.02.1996",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-03",
+   "text": "Chiara",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-04",
+   "text": "Max Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-04",
+   "text": "01.09.1956",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-04",
+   "text": "Max",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-05",
+   "text": "Elias Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-05",
+   "text": "16.02.1974",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-05",
+   "text": "Elias",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-06",
+   "text": "Noah Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-06",
+   "text": "05.01.1968",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-06",
+   "text": "Noah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-07",
+   "text": "Piotr Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-07",
+   "text": "24.05.1952",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-07",
+   "text": "Piotr",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-08",
+   "text": "Mehmet Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-08",
+   "text": "14.03.1992",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-08",
+   "text": "Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-09",
+   "text": "Sophie Schäfer",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-09",
+   "text": "20.04.1956",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-09",
+   "text": "Sophie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-10",
+   "text": "Erika Beispiel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-10",
+   "text": "15.06.1999",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-10",
+   "text": "Erika",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-01",
+   "text": "Mehmet Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-01",
+   "text": "Leonie Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-01",
+   "text": "Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-01",
+   "text": "Schlafstörungen",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "Ben Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "Lena Dietrich",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "Ben",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "einer Allergie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-03",
+   "text": "Mehmet Becker",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-03",
+   "text": "Chiara Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-03",
+   "text": "Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-03",
+   "text": "Rückenschmerzen",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-04",
+   "text": "Felix Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-04",
+   "text": "Jonas Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-04",
+   "text": "Felix",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-04",
+   "text": "Schlafstörungen",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-05",
+   "text": "Noah Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-05",
+   "text": "Mia Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-05",
+   "text": "Noah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-05",
+   "text": "Rückenschmerzen",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-06",
+   "text": "Elias Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-06",
+   "text": "Hannah Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-06",
+   "text": "Elias",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-06",
+   "text": "Schlafstörungen",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-07",
+   "text": "Jonas Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-07",
+   "text": "Clara Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-07",
+   "text": "Jonas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-07",
+   "text": "Rückenschmerzen",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-08",
+   "text": "Felix Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-08",
+   "text": "Max Krüger",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-08",
+   "text": "Felix",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-08",
+   "text": "Schlafstörungen",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-09",
+   "text": "Felix Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-09",
+   "text": "Chiara Vogel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-09",
+   "text": "Felix",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-09",
+   "text": "Rückenschmerzen",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-10",
+   "text": "Hannah Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-10",
+   "text": "Greta Wagner",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-10",
+   "text": "Hannah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-10",
+   "text": "Rückenschmerzen",
+   "expected": "gesundheit",
+   "got": null
+  }
+ ],
+ "false_alarms": [
+  {
+   "doc": "m_telefonliste-01",
+   "text": "+49 221 33439496",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-01",
+   "text": "+49 221 162394",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-02",
+   "text": "0341 14457463",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-02",
+   "text": "+49 40 69749599",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-03",
+   "text": "0221 72249863",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-03",
+   "text": "040 882973",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-04",
+   "text": "+49 (0)221 78726786",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-04",
+   "text": "+49 30 7658167",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-05",
+   "text": "(0221) 267 2162",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-05",
+   "text": "040 5259929",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-06",
+   "text": "+49 431 66495996",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-06",
+   "text": "+49 431 17811838",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-07",
+   "text": "+49 221 8929355",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-07",
+   "text": "0221 679191",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-08",
+   "text": "0341 33492448",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-08",
+   "text": "+49 (0)221 29726923",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-09",
+   "text": "+49 (0)40 36376748",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-09",
+   "text": "0221 1932723",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-10",
+   "text": "040-72463233",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-10",
+   "text": "(0431) 748 98871",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-01",
+   "text": "(030) 836 667",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-02",
+   "text": "+49 (0)89 621581",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-03",
+   "text": "0221 86859989",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-04",
+   "text": "089-73143699",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-05",
+   "text": "+49 (0)30 18125895",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-06",
+   "text": "0431-242411",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-07",
+   "text": "(040) 196 71474",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-08",
+   "text": "0431-964694",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-09",
+   "text": "+49 (0)341 2211635",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-10",
+   "text": "+49 (0)221 979527",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "seit Wochen.",
+   "label": "Gesundheitsdaten",
+   "confidence": 0.85
+  }
+ ]
+}

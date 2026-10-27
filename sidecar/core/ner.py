@@ -351,6 +351,11 @@ def detect(words: list[dict], timer=None, llm_cache: dict | None = None, on_step
             suggestions.extend(_gliner_pass(text, index))
 
     suggestions = resolve_conflicts(suggestions)
+    # Phase 17c: Zusammengefasste Treffer zeigen alle Wörter, die geschwärzt werden
+    # (vorher z. B. nur „5“ statt „Kieler Straße 5“)
+    by_id = {w["id"]: w["text"] for w in words}
+    for s in suggestions:
+        s["text"] = " ".join(by_id[i] for i in s["word_ids"] if i in by_id)
     # Phase 17: allgemeine Datumsangaben früh entfernen (core/vorschlagsregeln.py)
     suggestions = vorschlagsregeln.vor_der_ki(text, suggestions)
 
