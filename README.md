@@ -13,9 +13,11 @@ Ergebnis ohne Befund lässt sich exportieren.
 - **Erkennung in drei Stufen:** Regeln mit Prüfziffern (ohne KI), lokales Erkennungsmodell (GLiNER)
   oder zusätzlich ein lokales Sprachmodell (Qwen3) für unsichere Treffer. Oder ganz ohne Analyse,
   nur manuell.
-- **Erkannte Angaben (Auswahl):** Namen, Anschriften, Telefon, E-Mail, Geburtsdaten, IBAN, Steuer-ID,
-  Sozialversicherungs- und Krankenversichertennummer, Ausweis- und Personalnummern, Aktenzeichen,
-  Kfz-Kennzeichen, Gesundheitsdaten und weitere besondere Kategorien nach Art. 9 DSGVO.
+- **Erkannte Angaben (Auswahl):** Namen, Anschriften, Telefon, E-Mail, Geburts- und Sterbedaten, IBAN,
+  Steuer-ID, Sozialversicherungs- und Krankenversichertennummer, Ausweis- und Personalnummern,
+  Organisationszeichen, Aktenzeichen, Kfz-Kennzeichen, Gesundheitsdaten und weitere besondere Kategorien
+  nach Art. 9 DSGVO; auf Scans auch Unterschriften, Handschrift und Stempel. Allgemeine Datumsangaben
+  und Organisationen werden nur mit Personenbezug vorgeschlagen.
 - **Eigene Markierungen** als Rechteck oder Textauswahl, mit Rückgängig und Wiederholen.
 - **Echtes Schwärzen:** Text, Bildpunkte und Vektorgrafik werden aus der Datei entfernt, nicht nur
   überdeckt. Metadaten, JavaScript, Anhänge und Vorschaubilder werden bereinigt.
