@@ -1,0 +1,25 @@
+Schwärzsiegel – Quellcode
+=========================
+
+Schwärzsiegel ist freie Software unter der GNU Affero General Public License,
+Version 3 oder (nach Ihrer Wahl) jeder späteren Version. Der Lizenztext steht
+in der Datei LICENSE.txt in diesem Ordner.
+
+Der vollständige Quellcode dieser Version einschließlich der Skripte zum Bauen
+des Installationsprogramms liegt dem Installationspaket als Datei bei:
+
+    Schwaerzsiegel-Quellcode-<Version>.zip
+
+Darin enthalten sind auch die Quellarchive der mitgelieferten AGPL-Bausteine
+PyMuPDF und MuPDF (Ordner drittquellen, mit Prüfsummen). Öffentlich ist der
+Quellcode verfügbar unter https://github.com/schwaerzsiegel/schwaerzsiegel
+Auf Anfrage erhalten Sie ihn auch per E-Mail an info@schwaerzsiegel.de.
+
+Eine Übersicht aller Bausteine mit Lizenzen steht in DRITTANBIETER-LIZENZEN.txt
+und schwaerzsiegel-sbom.cdx.json.
+
+Die Lizenz selbst enthält keine Gewährleistung. Haben Sie Schwärzsiegel im
+Rahmen eines Pilots oder mit dem Schwärzsiegel-Paket erhalten, gelten
+zusätzlich die Bedingungen Ihrer Vereinbarung.
+
+© 2026 Cem Karatas · info@schwaerzsiegel.de

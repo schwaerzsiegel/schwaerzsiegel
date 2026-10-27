@@ -1,0 +1,25 @@
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/gen/
+sidecar/build/
+sidecar/dist/
+sidecar/models/*.gguf
+sidecar/sidecar.log
+sidecar/sidecar.port
+sidecar/audit.db
+__pycache__/
+sidecar/models/hf-cache/
+sidecar/models/tessdata/
+release/
+# Phase 4: kundenspezifisches Branding gehört nicht ins Repository
+# (Vorlage: sidecar/branding-beispiel/)
+sidecar/branding/
+
+# Machbarkeitstest PDFium: erzeugte Test-PDFs
+
+# Phase 13: erzeugte Kunden-Brandings (tools/branding/paket_erstellen.py)
+ausgabe/
+
+# Quellen mitgelieferter Bausteine (Download neben den Versionen, nicht in Git)
+drittquellen/

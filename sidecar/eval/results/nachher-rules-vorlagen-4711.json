@@ -1,0 +1,195 @@
+{
+ "mode": "rules",
+ "seed": 4711,
+ "corpus": "vorlagen",
+ "documents": 60,
+ "seconds": 1.4,
+ "micro": {
+  "tp": 440,
+  "fn": 10,
+  "fp": 0,
+  "precision": 1.0,
+  "recall": 0.9777777777777777,
+  "f1": 0.9887640449438202
+ },
+ "coverage": 0.978448275862069,
+ "per_category": {
+  "person": {
+   "tp": 60,
+   "fn": 10,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.8571428571428571,
+   "f1": 0.923076923076923
+  },
+  "adresse": {
+   "tp": 100,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "telefon": {
+   "tp": 50,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "email": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsdatum": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsort": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "personalnummer": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "bankverbindung": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "ausweis": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "sv_nummer": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "steuer_id": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "kv_nummer": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "gesundheit": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {},
+ "missed": [
+  {
+   "doc": "lebenslauf-01",
+   "text": "Chiara Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-02",
+   "text": "Mehmet Kowalski",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-03",
+   "text": "Jonas Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "Lukas Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-05",
+   "text": "Felix Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-06",
+   "text": "Marie Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-07",
+   "text": "Chiara Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-08",
+   "text": "Lena Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-09",
+   "text": "Lukas Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "Chiara Lorenz",
+   "expected": "person",
+   "got": null
+  }
+ ],
+ "false_alarms": []
+}

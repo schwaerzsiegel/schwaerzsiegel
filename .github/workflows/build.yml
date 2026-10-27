@@ -1,0 +1,136 @@
+# Schwärzsiegel – Build des Windows-Installationsprogramms auf GitHub Actions
+#
+# Läuft auf einem frischen Windows-Rechner von GitHub, nachvollziehbar aus diesem Quellcode:
+#   - von Hand („Run workflow“) oder bei einem Versions-Tag (v*)
+#   - Ergebnis: Installationsprogramm, Prüfsummen und Bausteinliste als Download (1 Tag aufbewahrt)
+# Die KI-Modelle sind nicht Teil des Installationsprogramms (siehe ENTWICKLUNG.md, v34) und werden hier
+# nicht geladen. Die Code-Signatur folgt in einem eigenen Schritt (CODE_SIGNING.md).
+
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  windows:
+    runs-on: windows-2025
+    timeout-minutes: 150
+    env:
+      PYTHONUTF8: "1"
+      # llama-cpp-python wird aus dem Quellcode übersetzt. Nicht für den Prozessor des Build-Rechners
+      # optimieren (GGML_NATIVE), sondern für alle x64-Prozessoren mit AVX2 (ab ca. 2013).
+      CMAKE_ARGS: "-DGGML_NATIVE=OFF -DGGML_AVX=ON -DGGML_AVX2=ON -DGGML_FMA=ON -DGGML_F16C=ON"
+      FORCE_CMAKE: "1"
+    steps:
+      - name: Quellcode
+        uses: actions/checkout@v5
+
+      - name: Python 3.11.9
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11.9"
+          cache: pip
+          cache-dependency-path: sidecar/requirements-lock.txt
+
+      - name: Node.js 24
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24.22.0"
+          cache: npm
+
+      - name: Rust 1.99.1
+        shell: pwsh
+        run: |
+          rustup toolchain install 1.99.1 --profile minimal
+          rustup default 1.99.1
+          rustc --version
+
+      - name: Tesseract-OCR 5.4.0 (UB Mannheim)
+        shell: pwsh
+        run: |
+          choco install tesseract --version 5.4.0.20240606 -y --no-progress
+          & "C:\Program Files\Tesseract-OCR\tesseract.exe" --version
+
+      - name: Deutsches Sprachpaket (tessdata_fast) mit Prüfsumme
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force sidecar\models\tessdata | Out-Null
+          $ziel = "sidecar\models\tessdata\deu.traineddata"
+          Invoke-WebRequest "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/deu.traineddata" -OutFile $ziel
+          $ist = (Get-FileHash $ziel -Algorithm SHA256).Hash.ToLower()
+          if ($ist -ne "19d219bbb6672c869d20a9636c6816a81eb9a71796cb93ebe0cb1530e2cdb22d") { throw "Prüfsumme falsch: $ist" }
+
+      - name: Python-Pakete (feste Versionen)
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip==25.2
+          python -m pip install -r sidecar\requirements-lock.txt
+          python -m pip check
+
+      - name: Tests des Erkennungsdienstes
+        shell: pwsh
+        working-directory: sidecar
+        run: |
+          python -m pip install -r requirements-test.txt
+          python -m pip check
+          python -m unittest discover -p "test_*.py"
+
+      - name: Erkennungsdienst (PyInstaller)
+        shell: cmd
+        run: call build-sidecar.cmd
+
+      - name: KI-Bausteine im Erkennungsdienst enthalten
+        shell: pwsh
+        run: |
+          # Werden nur beim Laden eines Modells importiert; fehlen sie, sind die KI-Modi gesperrt.
+          $pyz = Get-Content sidecar\build\redaction-sidecar\PYZ-00.toc -Raw
+          foreach ($modul in "google.protobuf", "transformers.utils.sentencepiece_model_pb2", "gliner", "llama_cpp", "core.handschrift") {
+            if (-not $pyz.Contains("'$modul'")) { throw "Fehlt im Erkennungsdienst: $modul" }
+          }
+
+      - name: Pfadlängen kürzen
+        run: python sidecar\trim_dist.py
+
+      - name: Oberfläche – Pakete und Tests
+        shell: pwsh
+        run: |
+          npm ci
+          node --test tests/*.test.ts
+
+      - name: Lizenzhinweise und Bausteinliste
+        shell: pwsh
+        run: |
+          cargo fetch --manifest-path src-tauri\Cargo.toml
+          python tools\lizenzhinweise.py
+
+      - name: App und Installationsprogramm (Tauri)
+        shell: pwsh
+        run: npx tauri build --config src-tauri\tauri.release.conf.json
+
+      - name: Ergebnis mit Prüfsummen
+        shell: pwsh
+        run: |
+          $aus = New-Item -ItemType Directory -Force ergebnis
+          Copy-Item src-tauri\target\release\bundle\nsis\*-setup.exe $aus
+          Copy-Item src-tauri\lizenzhinweise\schwaerzsiegel-sbom.cdx.json $aus
+          Get-ChildItem $aus -File | ForEach-Object {
+            "{0}  {1}" -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(), $_.Name
+          } | Set-Content "$aus\SHA256SUMS.txt" -Encoding utf8
+          Get-Content "$aus\SHA256SUMS.txt"
+
+      - name: Download bereitstellen
+        uses: actions/upload-artifact@v6
+        with:
+          name: schwaerzsiegel-windows-${{ github.ref_name }}-${{ github.sha }}
+          path: ergebnis/
+          retention-days: 1
+          if-no-files-found: error

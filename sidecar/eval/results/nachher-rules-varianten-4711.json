@@ -1,0 +1,375 @@
+{
+ "mode": "rules",
+ "seed": 4711,
+ "corpus": "varianten",
+ "documents": 60,
+ "seconds": 1.1,
+ "micro": {
+  "tp": 320,
+  "fn": 40,
+  "fp": 0,
+  "precision": 1.0,
+  "recall": 0.8888888888888888,
+  "f1": 0.9411764705882353
+ },
+ "coverage": 0.9067909454061251,
+ "per_category": {
+  "person": {
+   "tp": 40,
+   "fn": 40,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.5,
+   "f1": 0.6666666666666666
+  },
+  "adresse": {
+   "tp": 60,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "telefon": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "email": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsdatum": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsort": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "personalnummer": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "sv_nummer": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "steuer_id": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "kv_nummer": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "gesundheit": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {},
+ "missed": [
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Elias",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Wagner",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Jonas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Noah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Noah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Ben",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Lena",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Piotr",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Lena",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Haas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Erika",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Paul",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "Felix Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "Hannah Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "Hannah Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "Erika Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "Greta Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "Mehmet Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "Ben Vogel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "Lukas Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "Erika Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "Chiara Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-01",
+   "text": "Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-02",
+   "text": "Jonas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-03",
+   "text": "Leonie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-04",
+   "text": "Erika",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-05",
+   "text": "Sophie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-06",
+   "text": "Marie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-07",
+   "text": "Max",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-08",
+   "text": "Mia",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-09",
+   "text": "Lukas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-10",
+   "text": "Hannah",
+   "expected": "person",
+   "got": null
+  }
+ ],
+ "false_alarms": []
+}

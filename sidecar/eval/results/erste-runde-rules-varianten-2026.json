@@ -1,0 +1,615 @@
+{
+ "mode": "rules",
+ "seed": 2026,
+ "corpus": "varianten",
+ "documents": 60,
+ "seconds": 0.5,
+ "micro": {
+  "tp": 280,
+  "fn": 80,
+  "fp": 0,
+  "precision": 1.0,
+  "recall": 0.7777777777777778,
+  "f1": 0.8750000000000001
+ },
+ "coverage": 0.8101604278074866,
+ "per_category": {
+  "person": {
+   "tp": 30,
+   "fn": 50,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.375,
+   "f1": 0.5454545454545454
+  },
+  "adresse": {
+   "tp": 60,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "telefon": {
+   "tp": 10,
+   "fn": 10,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.5,
+   "f1": 0.6666666666666666
+  },
+  "email": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsdatum": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsort": {
+   "tp": 10,
+   "fn": 10,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.5,
+   "f1": 0.6666666666666666
+  },
+  "personalnummer": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "sv_nummer": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "steuer_id": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "kv_nummer": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "gesundheit": {
+   "tp": 10,
+   "fn": 10,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.5,
+   "f1": 0.6666666666666666
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {},
+ "missed": [
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Mustermann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Noah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Berlin",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Vogel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Elias",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Dresden",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Beispiel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Lukas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Hamburg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Depressive Episode",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Beispiel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Leonie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Kiel",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Beispiel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Mia",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Beispielstadt",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Hannah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Hamburg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Felix",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Bremen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Schäfer",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Paul",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Leipzig",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Wagner",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Lena",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Frankfurt am Main",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Elias",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Hannover",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "Marie Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "Max Krüger",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "Leonie Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "Jonas Wagner",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "Hannah Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "Paul Haas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "Noah Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "Lukas Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "Marie Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "Chiara Kowalski",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-01",
+   "text": "Jonas Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-01",
+   "text": "+49 160 1687078",
+   "expected": "telefon",
+   "got": null
+  },
+  {
+   "doc": "v_email-01",
+   "text": "Jonas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-02",
+   "text": "Leonie Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-02",
+   "text": "0176/8269550",
+   "expected": "telefon",
+   "got": null
+  },
+  {
+   "doc": "v_email-02",
+   "text": "Leonie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-03",
+   "text": "Sophie Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-03",
+   "text": "0160/1683995",
+   "expected": "telefon",
+   "got": null
+  },
+  {
+   "doc": "v_email-03",
+   "text": "Sophie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-04",
+   "text": "Elias Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-04",
+   "text": "0151 2120666",
+   "expected": "telefon",
+   "got": null
+  },
+  {
+   "doc": "v_email-04",
+   "text": "Elias",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-05",
+   "text": "Lukas Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-05",
+   "text": "+49 171 3095521",
+   "expected": "telefon",
+   "got": null
+  },
+  {
+   "doc": "v_email-05",
+   "text": "Lukas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-06",
+   "text": "Aylin Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-06",
+   "text": "0176/7053365",
+   "expected": "telefon",
+   "got": null
+  },
+  {
+   "doc": "v_email-06",
+   "text": "Aylin",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-07",
+   "text": "Olga Becker",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-07",
+   "text": "0160/1077257",
+   "expected": "telefon",
+   "got": null
+  },
+  {
+   "doc": "v_email-07",
+   "text": "Olga",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-08",
+   "text": "Mehmet Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-08",
+   "text": "0171 0526517",
+   "expected": "telefon",
+   "got": null
+  },
+  {
+   "doc": "v_email-08",
+   "text": "Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-09",
+   "text": "Ben Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-09",
+   "text": "0176/7521621",
+   "expected": "telefon",
+   "got": null
+  },
+  {
+   "doc": "v_email-09",
+   "text": "Ben",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-10",
+   "text": "Lukas Becker",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-10",
+   "text": "0171/1971100",
+   "expected": "telefon",
+   "got": null
+  },
+  {
+   "doc": "v_email-10",
+   "text": "Lukas",
+   "expected": "person",
+   "got": null
+  }
+ ],
+ "false_alarms": []
+}

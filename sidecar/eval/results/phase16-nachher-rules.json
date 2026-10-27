@@ -1,0 +1,97 @@
+{
+ "mode": "rules",
+ "dokumente": {
+  "mailverlauf": {
+   "seiten": 2,
+   "sekunden": 0.0,
+   "vorschlaege": 36,
+   "vorausgewaehlt": 26,
+   "je_kategorie": {
+    "Person": 10,
+    "Telefonnummer": 8,
+    "E-Mail": 7,
+    "Firmenanschrift": 6,
+    "Datum": 4,
+    "Adresse": 1
+   },
+   "erwartet": 30,
+   "gefunden": 23,
+   "vorausgewaehlt_erwartet": 23,
+   "uebersehen": [
+    "Mehmet Yilmaz",
+    "Paul Hoffmann",
+    "Hannah Schulz",
+    "Felix Vogel",
+    "Mehmet Yilmaz",
+    "Jonas Becker",
+    "Paul Hoffmann"
+   ],
+   "nicht_vorausgewaehlt": [],
+   "organisationen_im_text": 19,
+   "organisation_vorschlaege": 0,
+   "organisationen_vorausgewaehlt": [],
+   "flaechen_gefunden": {}
+  },
+  "arbeitsvertrag": {
+   "seiten": 2,
+   "sekunden": 0.0,
+   "vorschlaege": 16,
+   "vorausgewaehlt": 10,
+   "je_kategorie": {
+    "Datum": 3,
+    "Firmenanschrift": 2,
+    "Adresse": 2,
+    "Personalnummer": 1,
+    "Geburtsdatum": 1,
+    "Steuer-ID": 1,
+    "Sozialversicherungsnummer": 1,
+    "Krankenversichertennummer": 1,
+    "Person": 1,
+    "Geburtsort": 1,
+    "IBAN": 1,
+    "Betrag": 1
+   },
+   "erwartet": 12,
+   "gefunden": 9,
+   "vorausgewaehlt_erwartet": 9,
+   "uebersehen": [
+    "Clara Dietrich",
+    "Clara Dietrich",
+    "Lukas Seidel"
+   ],
+   "nicht_vorausgewaehlt": [],
+   "organisationen_im_text": 13,
+   "organisation_vorschlaege": 0,
+   "organisationen_vorausgewaehlt": [],
+   "flaechen_gefunden": {}
+  },
+  "brief_scan": {
+   "seiten": 1,
+   "sekunden": 1.1,
+   "vorschlaege": 10,
+   "vorausgewaehlt": 8,
+   "je_kategorie": {
+    "Adresse": 5,
+    "Handschrift oder Stempel": 2,
+    "Bild (ungeprüft)": 1,
+    "Unterschrift": 1,
+    "Datum": 1
+   },
+   "erwartet": 4,
+   "gefunden": 3,
+   "vorausgewaehlt_erwartet": 3,
+   "uebersehen": [
+    "Olga Nowak"
+   ],
+   "nicht_vorausgewaehlt": [],
+   "organisationen_im_text": 1,
+   "organisation_vorschlaege": 0,
+   "organisationen_vorausgewaehlt": [],
+   "flaechen_gefunden": {
+    "unterschrift": true,
+    "stempel": true,
+    "notiz": true
+   }
+  }
+ }
+}

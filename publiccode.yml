@@ -1,0 +1,58 @@
+# Beschreibung für das Softwareverzeichnis von openCode (Standard publiccode.yml)
+# ⚑ Vor der Veröffentlichung: releaseDate prüfen und mit dem Prüfwerkzeug von
+#   openCode/publiccode validieren. Bei einem Spiegel auf openCode.de url ggf. anpassen.
+publiccodeYmlVersion: "0.4"
+
+name: Schwärzsiegel
+url: "https://github.com/schwaerzsiegel/schwaerzsiegel"
+softwareVersion: "1.0.0"
+releaseDate: "2026-10-24"
+platforms:
+  - windows
+
+categories:
+  - document-management
+
+developmentStatus: beta
+softwareType: "standalone/desktop"
+
+description:
+  de:
+    genericName: PDF-Schwärzung
+    shortDescription: >-
+      Schwärzt personenbezogene Daten in PDF-Dokumenten vollständig lokal auf dem
+      Windows-Arbeitsplatz – ohne Cloud und ohne Netzwerkzugriffe.
+    longDescription: >-
+      Schwärzsiegel schlägt personenbezogene Angaben in PDF-Dokumenten vor – wahlweise
+      mit Regeln und Prüfziffern, mit einem lokalen Erkennungsmodell (GLiNER) oder
+      zusätzlich mit einem lokalen Sprachmodell (Qwen3). Die Entscheidung trifft der
+      Mensch: Fundstellen werden bestätigt oder verworfen, eigene Bereiche als Rechteck
+      oder Textauswahl ergänzt. Beim Schwärzen werden Text, Bildpunkte und Vektorgrafik
+      tatsächlich aus der Datei entfernt, Metadaten, JavaScript und Anhänge bereinigt.
+      Anschließend prüft Schwärzsiegel die gespeicherte Datei unabhängig; nur ein
+      Ergebnis ohne Befund lässt sich exportieren. Alternativ können Angaben durch
+      Platzhalter pseudonymisiert werden. Alles läuft auf dem Arbeitsplatzrechner,
+      Dokumente verlassen ihn nicht.
+    features:
+      - Erkennung personenbezogener Daten mit Regeln, Prüfziffern und lokaler KI
+      - Echtes Schwärzen von Text, Bildern und Vektorgrafik
+      - Pseudonymisieren mit getrennter Zuordnungstabelle
+      - Unabhängige Prüfung der fertigen Datei vor dem Export
+      - Texterkennung für gescannte Seiten (Tesseract)
+      - Vollständig lokal, ohne Netzwerkzugriffe
+
+legal:
+  license: AGPL-3.0-or-later
+  mainCopyrightOwner: Cem Karatas
+  repoOwner: Cem Karatas
+
+maintenance:
+  type: internal
+  contacts:
+    - name: Cem Karatas
+      email: info@schwaerzsiegel.de
+
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - de

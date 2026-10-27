@@ -1,0 +1,622 @@
+{
+ "mode": "fast",
+ "seed": 4711,
+ "corpus": "mehrdeutig",
+ "documents": 30,
+ "seconds": 28.4,
+ "micro": {
+  "tp": 67,
+  "fn": 23,
+  "fp": 28,
+  "precision": 0.7052631578947368,
+  "recall": 0.7444444444444445,
+  "f1": 0.7243243243243243
+ },
+ "coverage": 0.7612903225806451,
+ "selection": {
+  "tp": 67,
+  "fn": 23,
+  "fp": 28,
+  "precision": 0.7052631578947368,
+  "recall": 0.7444444444444445,
+  "f1": 0.7243243243243243
+ },
+ "selection_false": [
+  {
+   "doc": "m_geburtstag-02",
+   "text": "Kollege",
+   "label": "Person",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-01",
+   "text": "+49 (0)89 4187579",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-01",
+   "text": "+49 (0)431 66394843",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-02",
+   "text": "+49 (0)341 36516561",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-02",
+   "text": "040 31471867",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-03",
+   "text": "+49 (0)221 33955576",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-03",
+   "text": "(030) 318 72239",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-04",
+   "text": "030 141286",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-04",
+   "text": "+49 (0)341 7657494",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-05",
+   "text": "030 15561617",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-05",
+   "text": "(0431) 639 2118",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-06",
+   "text": "089 281181",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_telefonliste-06",
+   "text": "0221-444172",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-01",
+   "text": "030-57652789",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-02",
+   "text": "0341-3234247",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-03",
+   "text": "+49 (0)221 91713717",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-04",
+   "text": "030 992699",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-05",
+   "text": "0221 3176647",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_vertragsnotiz-06",
+   "text": "(089) 926 27837",
+   "label": "Telefonnummer",
+   "llm": null
+  },
+  {
+   "doc": "m_protokoll-01",
+   "text": "seit Wochen.",
+   "label": "Gesundheitsdaten",
+   "llm": null
+  },
+  {
+   "doc": "m_protokoll-01",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "llm": null
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "seit Wochen.",
+   "label": "Gesundheitsdaten",
+   "llm": null
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "llm": null
+  },
+  {
+   "doc": "m_protokoll-03",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "llm": null
+  },
+  {
+   "doc": "m_protokoll-04",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "llm": null
+  },
+  {
+   "doc": "m_protokoll-05",
+   "text": "seit Wochen.",
+   "label": "Gesundheitsdaten",
+   "llm": null
+  },
+  {
+   "doc": "m_protokoll-05",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "llm": null
+  },
+  {
+   "doc": "m_protokoll-06",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "llm": null
+  }
+ ],
+ "per_category": {
+  "person": {
+   "tp": 52,
+   "fn": 2,
+   "fp": 1,
+   "precision": 0.9811320754716981,
+   "recall": 0.9629629629629629,
+   "f1": 0.9719626168224299
+  },
+  "adresse": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "telefon": {
+   "tp": 12,
+   "fn": 0,
+   "fp": 18,
+   "precision": 0.4,
+   "recall": 1.0,
+   "f1": 0.5714285714285715
+  },
+  "email": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "geburtsdatum": {
+   "tp": 0,
+   "fn": 12,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "geburtsort": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "personalnummer": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "iban": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "sv_nummer": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "steuer_id": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "kv_nummer": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "gesundheit": {
+   "tp": 3,
+   "fn": 9,
+   "fp": 9,
+   "precision": 0.25,
+   "recall": 0.25,
+   "f1": 0.25
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {
+  "geburtsdatum -> neutral": 12
+ },
+ "missed": [
+  {
+   "doc": "m_geburtstag-01",
+   "text": "23.09.1951",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_geburtstag-02",
+   "text": "04.11.2002",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_geburtstag-03",
+   "text": "26.09.1989",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_geburtstag-04",
+   "text": "27.03.1954",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_geburtstag-05",
+   "text": "13.11.1970",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_geburtstag-06",
+   "text": "17.04.1973",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_abwesenheit-01",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-02",
+   "text": "Depressive Episode",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-03",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-04",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-05",
+   "text": "Asthma bronchiale",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_abwesenheit-06",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-01",
+   "text": "19.03.1970",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_vertragsnotiz-02",
+   "text": "07.12.2002",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_vertragsnotiz-03",
+   "text": "13.12.1991",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_vertragsnotiz-04",
+   "text": "24.06.1976",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_vertragsnotiz-04",
+   "text": "Noah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "m_vertragsnotiz-05",
+   "text": "08.05.1973",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_vertragsnotiz-06",
+   "text": "11.07.1999",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "m_protokoll-01",
+   "text": "einer Allergie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "einer Allergie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-05",
+   "text": "einer Allergie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "m_protokoll-06",
+   "text": "Clara",
+   "expected": "person",
+   "got": null
+  }
+ ],
+ "false_alarms": [
+  {
+   "doc": "m_geburtstag-02",
+   "text": "Kollege",
+   "label": "Person",
+   "confidence": 0.47
+  },
+  {
+   "doc": "m_telefonliste-01",
+   "text": "+49 (0)89 4187579",
+   "label": "Telefonnummer",
+   "confidence": 0.54
+  },
+  {
+   "doc": "m_telefonliste-01",
+   "text": "+49 (0)431 66394843",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-02",
+   "text": "+49 (0)341 36516561",
+   "label": "Telefonnummer",
+   "confidence": 0.56
+  },
+  {
+   "doc": "m_telefonliste-02",
+   "text": "040 31471867",
+   "label": "Telefonnummer",
+   "confidence": 0.54
+  },
+  {
+   "doc": "m_telefonliste-03",
+   "text": "+49 (0)221 33955576",
+   "label": "Telefonnummer",
+   "confidence": 0.57
+  },
+  {
+   "doc": "m_telefonliste-03",
+   "text": "(030) 318 72239",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-04",
+   "text": "030 141286",
+   "label": "Telefonnummer",
+   "confidence": 0.74
+  },
+  {
+   "doc": "m_telefonliste-04",
+   "text": "+49 (0)341 7657494",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-05",
+   "text": "030 15561617",
+   "label": "Telefonnummer",
+   "confidence": 0.8
+  },
+  {
+   "doc": "m_telefonliste-05",
+   "text": "(0431) 639 2118",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_telefonliste-06",
+   "text": "089 281181",
+   "label": "Telefonnummer",
+   "confidence": 0.77
+  },
+  {
+   "doc": "m_telefonliste-06",
+   "text": "0221-444172",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-01",
+   "text": "030-57652789",
+   "label": "Telefonnummer",
+   "confidence": 0.63
+  },
+  {
+   "doc": "m_vertragsnotiz-02",
+   "text": "0341-3234247",
+   "label": "Telefonnummer",
+   "confidence": 0.59
+  },
+  {
+   "doc": "m_vertragsnotiz-03",
+   "text": "+49 (0)221 91713717",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_vertragsnotiz-04",
+   "text": "030 992699",
+   "label": "Telefonnummer",
+   "confidence": 0.78
+  },
+  {
+   "doc": "m_vertragsnotiz-05",
+   "text": "0221 3176647",
+   "label": "Telefonnummer",
+   "confidence": 0.5
+  },
+  {
+   "doc": "m_vertragsnotiz-06",
+   "text": "(089) 926 27837",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "m_protokoll-01",
+   "text": "seit Wochen.",
+   "label": "Gesundheitsdaten",
+   "confidence": 0.85
+  },
+  {
+   "doc": "m_protokoll-01",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "confidence": 0.49
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "seit Wochen.",
+   "label": "Gesundheitsdaten",
+   "confidence": 0.85
+  },
+  {
+   "doc": "m_protokoll-02",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "confidence": 0.54
+  },
+  {
+   "doc": "m_protokoll-03",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "confidence": 0.79
+  },
+  {
+   "doc": "m_protokoll-04",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "confidence": 0.79
+  },
+  {
+   "doc": "m_protokoll-05",
+   "text": "seit Wochen.",
+   "label": "Gesundheitsdaten",
+   "confidence": 0.85
+  },
+  {
+   "doc": "m_protokoll-05",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "confidence": 0.5
+  },
+  {
+   "doc": "m_protokoll-06",
+   "text": "Rückenschmerzen",
+   "label": "Gesundheitsdaten",
+   "confidence": 0.54
+  }
+ ]
+}

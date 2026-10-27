@@ -1,0 +1,188 @@
+{
+ "mode": "fast",
+ "seed": 4711,
+ "corpus": "varianten",
+ "documents": 60,
+ "seconds": 47.6,
+ "micro": {
+  "tp": 359,
+  "fn": 1,
+  "fp": 3,
+  "precision": 0.9917127071823204,
+  "recall": 0.9972222222222222,
+  "f1": 0.9944598337950138
+ },
+ "coverage": 0.996005326231691,
+ "selection": {
+  "tp": 359,
+  "fn": 1,
+  "fp": 3,
+  "precision": 0.9917127071823204,
+  "recall": 0.9972222222222222,
+  "f1": 0.9944598337950138
+ },
+ "selection_false": [
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Praxis Dr. Muster,",
+   "label": "Person",
+   "llm": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Praxis Dr. Muster,",
+   "label": "Person",
+   "llm": null
+  },
+  {
+   "doc": "v_ausweiskopie-10",
+   "text": "366455",
+   "label": "Ausweisnummer",
+   "llm": null
+  }
+ ],
+ "per_category": {
+  "person": {
+   "tp": 79,
+   "fn": 1,
+   "fp": 2,
+   "precision": 0.9753086419753086,
+   "recall": 0.9875,
+   "f1": 0.9813664596273292
+  },
+  "adresse": {
+   "tp": 60,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "telefon": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "email": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsdatum": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsort": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "personalnummer": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 1,
+   "precision": 0.9090909090909091,
+   "recall": 1.0,
+   "f1": 0.9523809523809523
+  },
+  "sv_nummer": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "steuer_id": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "kv_nummer": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "gesundheit": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {},
+ "missed": [
+  {
+   "doc": "v_email-01",
+   "text": "Mehmet",
+   "expected": "person",
+   "got": null
+  }
+ ],
+ "false_alarms": [
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Praxis Dr. Muster,",
+   "label": "Person",
+   "confidence": 0.41
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Praxis Dr. Muster,",
+   "label": "Person",
+   "confidence": 0.45
+  },
+  {
+   "doc": "v_ausweiskopie-10",
+   "text": "366455",
+   "label": "Ausweisnummer",
+   "confidence": 0.43
+  }
+ ]
+}

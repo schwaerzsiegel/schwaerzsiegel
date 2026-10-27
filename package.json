@@ -1,0 +1,27 @@
+{
+  "name": "schwaerzsiegel",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "dev:exe": "vite --mode exe",
+    "dev:tauri": "vite --mode tauri",
+    "build": "tsc && vite build",
+    "test:frontend": "node --test tests/*.test.ts",
+    "tauri": "tauri",
+    "tauri:build": "tauri build --config src-tauri/tauri.release.conf.json"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4",
+    "typescript": "^5",
+    "vite": "^5"
+  }
+}

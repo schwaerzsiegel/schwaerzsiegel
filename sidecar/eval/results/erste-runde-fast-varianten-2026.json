@@ -1,0 +1,270 @@
+{
+ "mode": "fast",
+ "seed": 2026,
+ "corpus": "varianten",
+ "documents": 60,
+ "seconds": 27.5,
+ "micro": {
+  "tp": 346,
+  "fn": 14,
+  "fp": 9,
+  "precision": 0.9746478873239437,
+  "recall": 0.9611111111111111,
+  "f1": 0.9678321678321679
+ },
+ "coverage": 0.963903743315508,
+ "per_category": {
+  "person": {
+   "tp": 78,
+   "fn": 2,
+   "fp": 5,
+   "precision": 0.9397590361445783,
+   "recall": 0.975,
+   "f1": 0.9570552147239264
+  },
+  "adresse": {
+   "tp": 60,
+   "fn": 0,
+   "fp": 3,
+   "precision": 0.9523809523809523,
+   "recall": 1.0,
+   "f1": 0.975609756097561
+  },
+  "telefon": {
+   "tp": 19,
+   "fn": 1,
+   "fp": 1,
+   "precision": 0.95,
+   "recall": 0.95,
+   "f1": 0.9500000000000001
+  },
+  "email": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsdatum": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsort": {
+   "tp": 19,
+   "fn": 1,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.95,
+   "f1": 0.9743589743589743
+  },
+  "personalnummer": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "sv_nummer": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "steuer_id": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "kv_nummer": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "gesundheit": {
+   "tp": 10,
+   "fn": 10,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.5,
+   "f1": 0.6666666666666666
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {
+  "telefon -> adresse": 1
+ },
+ "missed": [
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Beispiel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Depressive Episode",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Beispiel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Beispielstadt",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_email-09",
+   "text": "0176/7521621",
+   "expected": "telefon",
+   "got": "Adresse"
+  }
+ ],
+ "false_alarms": [
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Versicherte(r):",
+   "label": "Person",
+   "confidence": 0.43
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Arzt:",
+   "label": "Person",
+   "confidence": 0.46
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Versicherte(r):",
+   "label": "Person",
+   "confidence": 0.43
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Arzt:",
+   "label": "Person",
+   "confidence": 0.5
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Praxis Dr. Muster,",
+   "label": "Person",
+   "confidence": 0.45
+  },
+  {
+   "doc": "v_email-02",
+   "text": "03153 9960",
+   "label": "Adresse",
+   "confidence": 0.46
+  },
+  {
+   "doc": "v_email-02",
+   "text": "06282 3091",
+   "label": "Adresse",
+   "confidence": 0.47
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "0899 6799",
+   "label": "Telefonnummer",
+   "confidence": 0.51
+  }
+ ]
+}

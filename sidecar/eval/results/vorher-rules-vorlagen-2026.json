@@ -1,0 +1,2413 @@
+{
+ "mode": "rules",
+ "seed": 2026,
+ "documents": 60,
+ "seconds": 1.3,
+ "micro": {
+  "tp": 130,
+  "fn": 320,
+  "fp": 65,
+  "precision": 0.6666666666666666,
+  "recall": 0.28888888888888886,
+  "f1": 0.40310077519379844
+ },
+ "coverage": 0.36217948717948717,
+ "per_category": {
+  "person": {
+   "tp": 0,
+   "fn": 70,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "adresse": {
+   "tp": 0,
+   "fn": 100,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "telefon": {
+   "tp": 50,
+   "fn": 0,
+   "fp": 65,
+   "precision": 0.43478260869565216,
+   "recall": 1.0,
+   "f1": 0.6060606060606061
+  },
+  "email": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsdatum": {
+   "tp": 0,
+   "fn": 30,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "geburtsort": {
+   "tp": 0,
+   "fn": 20,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "personalnummer": {
+   "tp": 0,
+   "fn": 30,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 10,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 0,
+   "fn": 10,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "sv_nummer": {
+   "tp": 0,
+   "fn": 20,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "steuer_id": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "kv_nummer": {
+   "tp": 0,
+   "fn": 10,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "gesundheit": {
+   "tp": 10,
+   "fn": 20,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.3333333333333333,
+   "f1": 0.5
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {
+  "geburtsdatum -> neutral": 9,
+  "geburtsdatum -> telefon": 5,
+  "adresse -> telefon": 1
+ },
+ "missed": [
+  {
+   "doc": "personalakte-01",
+   "text": "Jonas Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "personalakte-01",
+   "text": "MA-42-673",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-01",
+   "text": "Hauptstraße 114",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-01",
+   "text": "88778 Hannover",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-01",
+   "text": "17. September 1991",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "personalakte-01",
+   "text": "Frankfurt am Main",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-01",
+   "text": "53 170991 N 281",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "Marie Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "MA-59-175",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "Gartenstraße 34b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "71165 Dresden",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "26.09.1981",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "53 260981 L 160",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "Aylin Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "P-82367",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "Birkenring 60",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "30170 Hannover",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "10. August 1970",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "Musterhausen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "12 100870 P 278",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "Paul Becker",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "P-40615",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "Lindenallee 83",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "76404 Köln",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "22. Januar 1998",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "65 220198 B 401",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "Sophie Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "P-76055",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "Am Mühlbach 88b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "43419 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "18.01.1992",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "Kiel",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "12 180192 S 456",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "Aylin Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "MA-69-325",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "Kirchgasse 85",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "31261 München",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "9. Mai 1952",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "Kiel",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "12 090552 F 085",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "Noah Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "P-55662",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "Schillerplatz 107",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "51947 München",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "24.03.1977",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "München",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "53 240377 P 800",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "Aylin Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "698895",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "Bahnhofstr. 5b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "27463 Beispielstadt",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "16. Mai 1981",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "53 160581 B 867",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "Sophie Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "596832",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "Lindenallee 88",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "64252 Nürnberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "6. März 1994",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "Beispielstadt",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "65 060394 L 034",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "Mehmet Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "P-70517",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "Hauptstraße 105a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "48896 Beispielstadt",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "27.09.2002",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "Dresden",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "65 270902 F 278",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "Max Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "25.03.1983",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "R385642713",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "Schillerplatz 11a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "31971 Beispielstadt",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "Sertralin 50 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "Ben Kowalski",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "03.12.1993",
+   "expected": "geburtsdatum",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "N745219801",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "Musterweg 84a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "41194 Musterhausen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "Ibuprofen 400 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "Kowalski",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "Olga Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "12. August 1965",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "R111361792",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "Am Mühlbach 39",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "91420 Frankfurt am Main",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "Metformin 500 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "Aylin Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "6. Februar 1955",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "T487464394",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "Gartenstraße 20b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "71113 Frankfurt am Main",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "Migräne",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "Metformin 500 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "Jonas Kowalski",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "28. Juli 1998",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "X602780468",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "Birkenring 75a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "84632 Leipzig",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "Metformin 500 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "Kowalski",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "Chiara Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "21.03.2000",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "P192948083",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "Bahnhofstr. 100",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "26879 Leipzig",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "Asthma bronchiale",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "Salbutamol-Spray",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "Max Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "10. Juli 1955",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "D087526236",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "Uferdamm 26",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "13938 Köln",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "Sertralin 50 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "Lena Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "06.04.1996",
+   "expected": "geburtsdatum",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "A801000520",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "Gartenstraße 120a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "91559 Leipzig",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "Sertralin 50 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "Max Wagner",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "02.05.1983",
+   "expected": "geburtsdatum",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "X299239816",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "Birkenring 58",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "65116 Kiel",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "Depressive Episode",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "Salbutamol-Spray",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "Wagner",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "Clara Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "2. Juli 1975",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "B133252692",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "Schillerplatz 13b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "75318 Leipzig",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "Metformin 500 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-01",
+   "text": "Mehmet Schäfer",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-01",
+   "text": "Lindenallee 17",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-01",
+   "text": "81263 Leipzig",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-01",
+   "text": "2352330029",
+   "expected": "bankverbindung",
+   "got": null
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "Elias Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "Lindenallee 94",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "27137 Berlin",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "2015882924",
+   "expected": "bankverbindung",
+   "got": null
+  },
+  {
+   "doc": "bankformular-03",
+   "text": "Chiara Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-03",
+   "text": "Gartenstraße 105",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-03",
+   "text": "65165 Leipzig",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-03",
+   "text": "7680003716",
+   "expected": "bankverbindung",
+   "got": null
+  },
+  {
+   "doc": "bankformular-04",
+   "text": "Chiara Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-04",
+   "text": "Schillerplatz 107",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-04",
+   "text": "47997 München",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-04",
+   "text": "2654873744",
+   "expected": "bankverbindung",
+   "got": null
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "Elias Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "Bahnhofstr. 70",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "10098 Musterhausen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "3263084112",
+   "expected": "bankverbindung",
+   "got": null
+  },
+  {
+   "doc": "bankformular-06",
+   "text": "Max Schäfer",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-06",
+   "text": "Schillerplatz 118b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-06",
+   "text": "28051 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-06",
+   "text": "9552357894",
+   "expected": "bankverbindung",
+   "got": null
+  },
+  {
+   "doc": "bankformular-07",
+   "text": "Clara Becker",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-07",
+   "text": "Rosenweg 52a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-07",
+   "text": "20183 Berlin",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-07",
+   "text": "6071636134",
+   "expected": "bankverbindung",
+   "got": null
+  },
+  {
+   "doc": "bankformular-08",
+   "text": "Aylin Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-08",
+   "text": "Musterweg 61b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-08",
+   "text": "71202 Dresden",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-08",
+   "text": "2017682360",
+   "expected": "bankverbindung",
+   "got": null
+  },
+  {
+   "doc": "bankformular-09",
+   "text": "Elias Dietrich",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-09",
+   "text": "Lindenallee 4a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-09",
+   "text": "93244 Berlin",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-09",
+   "text": "8034248560",
+   "expected": "bankverbindung",
+   "got": null
+  },
+  {
+   "doc": "bankformular-10",
+   "text": "Mehmet Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "bankformular-10",
+   "text": "Gartenstraße 102a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-10",
+   "text": "47143 Bremen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "bankformular-10",
+   "text": "499772186",
+   "expected": "bankverbindung",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-01",
+   "text": "Paul Schäfer",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-01",
+   "text": "Lindenallee 22a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-01",
+   "text": "23429 Köln",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-01",
+   "text": "3. Mai 1993",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-01",
+   "text": "Nürnberg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-02",
+   "text": "Lukas Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-02",
+   "text": "Hauptstraße 107",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-02",
+   "text": "37667 Musterhausen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-02",
+   "text": "13.02.1985",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-02",
+   "text": "Musterhausen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-03",
+   "text": "Lukas Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-03",
+   "text": "Schillerplatz 95",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-03",
+   "text": "15894 München",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-03",
+   "text": "13. März 1958",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-03",
+   "text": "München",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "Paul Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "Gartenstraße 97a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "21059 Hannover",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "11. Januar 1990",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "München",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-05",
+   "text": "Lena Schäfer",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-05",
+   "text": "Bahnhofstr. 100a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-05",
+   "text": "35987 Hamburg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-05",
+   "text": "04.09.1985",
+   "expected": "geburtsdatum",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "lebenslauf-05",
+   "text": "Musterhausen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-06",
+   "text": "Leonie Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-06",
+   "text": "Gartenstraße 115a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-06",
+   "text": "69039 Kiel",
+   "expected": "adresse",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "lebenslauf-06",
+   "text": "04.01.2000",
+   "expected": "geburtsdatum",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "lebenslauf-06",
+   "text": "Dresden",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-07",
+   "text": "Noah Becker",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-07",
+   "text": "Schillerplatz 19",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-07",
+   "text": "15497 Hamburg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-07",
+   "text": "27. Oktober 2000",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-07",
+   "text": "Leipzig",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-08",
+   "text": "Max Schäfer",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-08",
+   "text": "Gartenstraße 23a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-08",
+   "text": "89022 Kiel",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-08",
+   "text": "28.07.1999",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-08",
+   "text": "Musterhausen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-09",
+   "text": "Mehmet Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-09",
+   "text": "Am Mühlbach 44b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-09",
+   "text": "26764 Musterhausen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-09",
+   "text": "14. März 1992",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-09",
+   "text": "Leipzig",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "Marie Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "Lindenallee 18b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "91703 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "19.09.1989",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "Hamburg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "TMCJRPPG36",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "65 121077 A 988",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "MA-22-580",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "P0H9K2VMN3",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "65 161090 F 254",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "080476",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-03",
+   "text": "Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "behoerde-03",
+   "text": "YW4W0LHN12",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-03",
+   "text": "13 080995 B 093",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-03",
+   "text": "P-93155",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-04",
+   "text": "Haas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "behoerde-04",
+   "text": "RPJRMH7KC6",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-04",
+   "text": "13 151195 H 231",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-04",
+   "text": "P-93155",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-05",
+   "text": "Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "behoerde-05",
+   "text": "RVFPZZ15W6",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-05",
+   "text": "15 071162 N 093",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-05",
+   "text": "MA-71-959",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-06",
+   "text": "Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "behoerde-06",
+   "text": "N9MJ3TFG60",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-06",
+   "text": "12 050782 B 010",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-06",
+   "text": "P-62447",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-07",
+   "text": "Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "behoerde-07",
+   "text": "LYHCG3LVK1",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-07",
+   "text": "13 210797 L 067",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-07",
+   "text": "MA-35-894",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "MR7Z9Z5G68",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "12 030672 Y 718",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "P-9561",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-09",
+   "text": "Krüger",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "behoerde-09",
+   "text": "RKG9C97LX8",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-09",
+   "text": "53 070666 K 783",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-09",
+   "text": "P-66579",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-10",
+   "text": "Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "behoerde-10",
+   "text": "W01YCJ0R32",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-10",
+   "text": "12 040684 L 713",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-10",
+   "text": "P-20541",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "Sophie Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "Rosenweg 66",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "67856 Dresden",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "MA-79-246",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "Aylin Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "Schillerplatz 84",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "58581 Köln",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "P-49386",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-03",
+   "text": "Sophie Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "rechnung-03",
+   "text": "Gartenstraße 113a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-03",
+   "text": "23726 Bremen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-03",
+   "text": "MA-46-116",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "Mia Krüger",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "Rosenweg 120",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "19993 Hamburg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "074905",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "Felix Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "Schillerplatz 28",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "43972 Berlin",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "P-56251",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "Greta Becker",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "Kirchgasse 34b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "53056 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "741585",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "Max Vogel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "Am Mühlbach 116b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "96791 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "MA-39-840",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "Greta Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "Uferdamm 105a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "99170 Dresden",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "P-52421",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "Jonas Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "Gartenstraße 104",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "24474 München",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "MA-41-407",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "Elias Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "Rosenweg 112",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "51484 Köln",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "605059",
+   "expected": "personalnummer",
+   "got": null
+  }
+ ],
+ "false_alarms": [
+  {
+   "doc": "personalakte-01",
+   "text": "05407 1151",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "02579 8144",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "0663 9411 4",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "06628 6692",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "09852 6843",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "0924 7814 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "04744 7858 6",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "09895 9818",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "05892 3145",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "04912 6418",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "0857 5390 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "06145 5256",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "01734 4998",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-03",
+   "text": "04815 8774 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "05375 9215",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "05350 9328",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-06",
+   "text": "07263 8180",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-10",
+   "text": "04810 2679 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "lebenslauf-03",
+   "text": "03091 3179",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "04459 5070 4",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "lebenslauf-07",
+   "text": "0635 7940 6",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "02932 8613",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "04270 1643 5",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "06502 9707",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "04624 7733 2",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "02045 6965",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-03",
+   "text": "04119 6282 5",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-04",
+   "text": "05564 6207",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "07348 5148",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "0575 3203 5",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-09",
+   "text": "0903 1699 2",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-10",
+   "text": "01855 8599",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "0815 3990 90",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "0301 6687 9",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "0961 7087 1",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "0815 6799 65",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "0301 8550 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-03",
+   "text": "0815 8284 80",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-03",
+   "text": "0301 8781 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "0815 4510 83",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "0301 9058 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "04586 8993 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "0815 1599 64",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "0907 6953 6",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "0301 2568 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "0815 5680 84",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "0301 3940 4",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "0815 6722 93",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "0301 7239 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "0452 2031 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "0815 6540 65",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "0301 8431 9",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "01503 8683",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "0815 1152 75",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "0301 6556 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "0973 2915 2",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "0815 1062 28",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "0301 6293 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "04426 5268 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  }
+ ]
+}

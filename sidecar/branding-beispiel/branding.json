@@ -1,0 +1,14 @@
+{
+  "productName": "Datenschutz-Schwärzung",
+  "customerName": "Stadtwerke Musterhausen",
+  "accent": "#0F6B6B",
+  "showPoweredBy": true,
+  "logo": "logo.svg",
+  "logoDark": "logo-dark.svg",
+  "support": {
+    "name": "IT-Service Stadtwerke Musterhausen (Beispiel)",
+    "email": "it-service@example.org",
+    "phone": "0000 000000",
+    "text": "Erfundenes Beispiel-Branding. Zum Ausprobieren diesen Ordner als sidecar/branding kopieren\noder REDACTION_BRANDING_DIR auf diesen Ordner setzen."
+  }
+}

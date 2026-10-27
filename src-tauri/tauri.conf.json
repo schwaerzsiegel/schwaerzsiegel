@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Schwärzsiegel",
+  "version": "1.0.0",
+  "identifier": "de.schwaerzsiegel.desktop",
+  "build": {
+    "beforeDevCommand": "npm run dev:tauri",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Schwärzsiegel",
+        "width": 1200,
+        "height": 800,
+        "minWidth": 900,
+        "minHeight": 600
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src 'self' http://127.0.0.1:*; img-src 'self' data: blob: http://127.0.0.1:*; style-src 'self' 'unsafe-inline'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/icon.ico"
+    ],
+    "publisher": "Schwärzsiegel",
+    "shortDescription": "Lokale Schwärzung personenbezogener Daten in PDFs",
+    "windows": {
+      "nsis": {
+        "installerHooks": "./installer-hooks.nsh",
+        "installerIcon": "installer/installer.ico",
+        "headerImage": "installer/header.bmp",
+        "sidebarImage": "installer/sidebar.bmp",
+        "compression": "zlib",
+        "languages": [
+          "German"
+        ],
+        "installMode": "currentUser"
+      }
+    }
+  }
+}

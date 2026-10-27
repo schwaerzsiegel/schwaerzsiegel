@@ -1,0 +1,87 @@
+{
+ "mode": "ai",
+ "dokumente": {
+  "mailverlauf": {
+   "seiten": 2,
+   "sekunden": 47.2,
+   "vorschlaege": 65,
+   "vorausgewaehlt": 34,
+   "je_kategorie": {
+    "Person": 19,
+    "Organisation": 18,
+    "Telefonnummer": 8,
+    "E-Mail": 7,
+    "Firmenanschrift": 6,
+    "Datum": 5,
+    "Adresse": 2
+   },
+   "erwartet": 30,
+   "gefunden": 30,
+   "vorausgewaehlt_erwartet": 30,
+   "uebersehen": [],
+   "nicht_vorausgewaehlt": [],
+   "organisationen_im_text": 19,
+   "organisation_vorschlaege": 18,
+   "organisationen_vorausgewaehlt": [],
+   "flaechen_gefunden": {}
+  },
+  "arbeitsvertrag": {
+   "seiten": 2,
+   "sekunden": 23.5,
+   "vorschlaege": 40,
+   "vorausgewaehlt": 21,
+   "je_kategorie": {
+    "Organisation": 13,
+    "Person": 11,
+    "Adresse": 3,
+    "Datum": 3,
+    "Firmenanschrift": 2,
+    "Personalnummer": 1,
+    "Geburtsdatum": 1,
+    "Steuer-ID": 1,
+    "Sozialversicherungsnummer": 1,
+    "Krankenversichertennummer": 1,
+    "Geburtsort": 1,
+    "IBAN": 1,
+    "Betrag": 1
+   },
+   "erwartet": 12,
+   "gefunden": 12,
+   "vorausgewaehlt_erwartet": 12,
+   "uebersehen": [],
+   "nicht_vorausgewaehlt": [],
+   "organisationen_im_text": 13,
+   "organisation_vorschlaege": 13,
+   "organisationen_vorausgewaehlt": [],
+   "flaechen_gefunden": {}
+  },
+  "brief_scan": {
+   "seiten": 1,
+   "sekunden": 4.3,
+   "vorschlaege": 13,
+   "vorausgewaehlt": 10,
+   "je_kategorie": {
+    "Adresse": 5,
+    "Handschrift oder Stempel": 2,
+    "Person": 2,
+    "Bild (ungeprüft)": 1,
+    "Unterschrift": 1,
+    "Datum": 1,
+    "Aktenzeichen": 1
+   },
+   "erwartet": 4,
+   "gefunden": 4,
+   "vorausgewaehlt_erwartet": 4,
+   "uebersehen": [],
+   "nicht_vorausgewaehlt": [],
+   "organisationen_im_text": 1,
+   "organisation_vorschlaege": 0,
+   "organisationen_vorausgewaehlt": [],
+   "flaechen_gefunden": {
+    "unterschrift": true,
+    "stempel": true,
+    "notiz": true
+   }
+  }
+ }
+}

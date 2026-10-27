@@ -1,0 +1,120 @@
+[
+ {
+  "mode": "rules",
+  "cores": 12,
+  "base_rss_gb": 0.43,
+  "runs": [
+   {
+    "pages": 1,
+    "full_text_pages": false,
+    "words": 44,
+    "seconds": 0.02,
+    "seconds_per_page": 0.02,
+    "cpu_load_percent": 7,
+    "peak_rss_gb": 0.43,
+    "llm_calls": 0
+   },
+   {
+    "pages": 10,
+    "full_text_pages": false,
+    "words": 425,
+    "seconds": 0.03,
+    "seconds_per_page": 0.0,
+    "cpu_load_percent": 8,
+    "peak_rss_gb": 0.43,
+    "llm_calls": 0
+   },
+   {
+    "pages": 100,
+    "full_text_pages": false,
+    "words": 4229,
+    "seconds": 0.27,
+    "seconds_per_page": 0.0,
+    "cpu_load_percent": 8,
+    "peak_rss_gb": 0.43,
+    "llm_calls": 0
+   }
+  ],
+  "loaded_rss_gb": 0.43
+ },
+ {
+  "mode": "fast",
+  "cores": 12,
+  "base_rss_gb": 0.43,
+  "runs": [
+   {
+    "pages": 1,
+    "full_text_pages": false,
+    "words": 44,
+    "seconds": 0.96,
+    "seconds_per_page": 0.96,
+    "cpu_load_percent": 62,
+    "peak_rss_gb": 2.56,
+    "llm_calls": 0
+   },
+   {
+    "pages": 10,
+    "full_text_pages": false,
+    "words": 425,
+    "seconds": 6.33,
+    "seconds_per_page": 0.63,
+    "cpu_load_percent": 65,
+    "peak_rss_gb": 1.85,
+    "llm_calls": 0
+   },
+   {
+    "pages": 100,
+    "full_text_pages": false,
+    "words": 4229,
+    "seconds": 61.32,
+    "seconds_per_page": 0.61,
+    "cpu_load_percent": 65,
+    "peak_rss_gb": 1.87,
+    "llm_calls": 0
+   },
+   {
+    "pages": 5,
+    "full_text_pages": true,
+    "words": 4018,
+    "seconds": 33.67,
+    "seconds_per_page": 6.73,
+    "cpu_load_percent": 65,
+    "peak_rss_gb": 2.29,
+    "llm_calls": 0
+   }
+  ],
+  "gliner_load_s": 12.3,
+  "loaded_rss_gb": 2.55
+ },
+ {
+  "mode": "ai",
+  "cores": 12,
+  "base_rss_gb": 0.43,
+  "runs": [
+   {
+    "pages": 1,
+    "full_text_pages": false,
+    "words": 34,
+    "seconds": 12.28,
+    "seconds_per_page": 12.28,
+    "cpu_load_percent": 86,
+    "peak_rss_gb": 4.24,
+    "llm_calls": 1
+   },
+   {
+    "pages": 10,
+    "full_text_pages": false,
+    "words": 306,
+    "seconds": 75.69,
+    "seconds_per_page": 7.57,
+    "cpu_load_percent": 67,
+    "peak_rss_gb": 4.08,
+    "llm_calls": 18
+   }
+  ],
+  "gliner_load_s": 12.4,
+  "llm_device": "Qwen3 1.7B, CPU (6 Threads)",
+  "llm_load_s": 2.8,
+  "loaded_rss_gb": 4.2
+ }
+]

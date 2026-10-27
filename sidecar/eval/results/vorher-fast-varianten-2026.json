@@ -1,0 +1,1359 @@
+{
+ "mode": "fast",
+ "seed": 2026,
+ "corpus": "varianten",
+ "documents": 60,
+ "seconds": 30.8,
+ "micro": {
+  "tp": 252,
+  "fn": 108,
+  "fp": 127,
+  "precision": 0.6649076517150396,
+  "recall": 0.7,
+  "f1": 0.6820027063599459
+ },
+ "coverage": 0.8275401069518716,
+ "per_category": {
+  "person": {
+   "tp": 78,
+   "fn": 2,
+   "fp": 13,
+   "precision": 0.8571428571428571,
+   "recall": 0.975,
+   "f1": 0.9122807017543859
+  },
+  "adresse": {
+   "tp": 60,
+   "fn": 0,
+   "fp": 10,
+   "precision": 0.8571428571428571,
+   "recall": 1.0,
+   "f1": 0.923076923076923
+  },
+  "telefon": {
+   "tp": 19,
+   "fn": 1,
+   "fp": 70,
+   "precision": 0.21348314606741572,
+   "recall": 0.95,
+   "f1": 0.34862385321100914
+  },
+  "email": {
+   "tp": 13,
+   "fn": 7,
+   "fp": 3,
+   "precision": 0.8125,
+   "recall": 0.65,
+   "f1": 0.7222222222222223
+  },
+  "geburtsdatum": {
+   "tp": 12,
+   "fn": 18,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.4,
+   "f1": 0.5714285714285715
+  },
+  "geburtsort": {
+   "tp": 0,
+   "fn": 20,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "personalnummer": {
+   "tp": 0,
+   "fn": 30,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 7,
+   "precision": 0.7407407407407407,
+   "recall": 1.0,
+   "f1": 0.851063829787234
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 1,
+   "precision": 0.9090909090909091,
+   "recall": 1.0,
+   "f1": 0.9523809523809523
+  },
+  "sv_nummer": {
+   "tp": 10,
+   "fn": 10,
+   "fp": 12,
+   "precision": 0.45454545454545453,
+   "recall": 0.5,
+   "f1": 0.47619047619047616
+  },
+  "steuer_id": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 11,
+   "precision": 0.6451612903225806,
+   "recall": 1.0,
+   "f1": 0.7843137254901961
+  },
+  "kv_nummer": {
+   "tp": 0,
+   "fn": 10,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "gesundheit": {
+   "tp": 10,
+   "fn": 10,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.5,
+   "f1": 0.6666666666666666
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {
+  "geburtsdatum -> neutral": 17,
+  "kv_nummer -> sv_nummer": 9,
+  "email -> person": 7,
+  "geburtsort -> adresse": 6,
+  "personalnummer -> steuer_id": 5,
+  "sv_nummer -> steuer_id": 2,
+  "personalnummer -> sv_nummer": 1,
+  "geburtsdatum -> person": 1,
+  "telefon -> adresse": 1,
+  "sv_nummer -> iban": 1
+ },
+ "missed": [
+  {
+   "doc": "v_aktennotiz-01",
+   "text": "MA-42-673",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-01",
+   "text": "MA-42-673",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-02",
+   "text": "404271",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-02",
+   "text": "404271",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-03",
+   "text": "P-82367",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-03",
+   "text": "P-82367",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-04",
+   "text": "P-40615",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-04",
+   "text": "paul.becker@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "v_aktennotiz-04",
+   "text": "P-40615",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-05",
+   "text": "P-76055",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-05",
+   "text": "P-76055",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-06",
+   "text": "MA-69-325",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-06",
+   "text": "MA-69-325",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-07",
+   "text": "P-55662",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-07",
+   "text": "P-55662",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-08",
+   "text": "P-71660",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-08",
+   "text": "P-71660",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-09",
+   "text": "MA-71-633",
+   "expected": "personalnummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "v_aktennotiz-09",
+   "text": "MA-71-633",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-10",
+   "text": "MA-69-903",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-10",
+   "text": "MA-69-903",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "12.10.1983",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Berlin",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "M713006685",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "22.10.1971",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Dresden",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "N745219801",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Beispiel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Hamburg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "M179581635",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Depressive Episode",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Kiel",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "M697961564",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Beispiel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "03.04.1961",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Beispielstadt",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "F401376156",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "21.08.1973",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Hamburg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "S776055384",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "7. Mai 1963",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Bremen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "W168865612",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Leipzig",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "J030042637",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "07.08.1953",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Frankfurt am Main",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "W242204267",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "11.03.1974",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Hannover",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "F433516583",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "1. Februar 1974",
+   "expected": "geburtsdatum",
+   "got": "Person"
+  },
+  {
+   "doc": "v_email-02",
+   "text": "leonie.seidel@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "v_email-03",
+   "text": "sophie.schulz@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "v_email-04",
+   "text": "elias.schulz@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "v_email-05",
+   "text": "lukas.schulz@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "v_email-08",
+   "text": "mehmet.yilmaz@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "v_email-09",
+   "text": "0176/7521621",
+   "expected": "telefon",
+   "got": "Adresse"
+  },
+  {
+   "doc": "v_email-10",
+   "text": "lukas.becker@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "v_ausweiskopie-01",
+   "text": "21. Mai 1950",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-01",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": "Adresse"
+  },
+  {
+   "doc": "v_ausweiskopie-02",
+   "text": "13.11.1989",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-02",
+   "text": "Dresden",
+   "expected": "geburtsort",
+   "got": "Adresse"
+  },
+  {
+   "doc": "v_ausweiskopie-03",
+   "text": "16.02.1986",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-03",
+   "text": "Leipzig",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-04",
+   "text": "14. Juni 1950",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-04",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": "Adresse"
+  },
+  {
+   "doc": "v_ausweiskopie-05",
+   "text": "02.05.1983",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-05",
+   "text": "Dresden",
+   "expected": "geburtsort",
+   "got": "Adresse"
+  },
+  {
+   "doc": "v_ausweiskopie-06",
+   "text": "28. Januar 1954",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-06",
+   "text": "Kiel",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-07",
+   "text": "01.04.1999",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-07",
+   "text": "Beispielstadt",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-08",
+   "text": "3. Oktober 1950",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-08",
+   "text": "Kiel",
+   "expected": "geburtsort",
+   "got": "Adresse"
+  },
+  {
+   "doc": "v_ausweiskopie-09",
+   "text": "28. August 1965",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-09",
+   "text": "Hannover",
+   "expected": "geburtsort",
+   "got": "Adresse"
+  },
+  {
+   "doc": "v_ausweiskopie-10",
+   "text": "21. August 1983",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-10",
+   "text": "Hamburg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "P-49386",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "13 110565 V 900",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "v_lohnabrechnung-02",
+   "text": "MA-46-116",
+   "expected": "personalnummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "v_lohnabrechnung-02",
+   "text": "40 270600 H 253",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "v_lohnabrechnung-03",
+   "text": "147825",
+   "expected": "personalnummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "v_lohnabrechnung-03",
+   "text": "12 050487 L 490",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-04",
+   "text": "506923",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-04",
+   "text": "15 210762 B 179",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "502537",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "15 030680 M 238",
+   "expected": "sv_nummer",
+   "got": "IBAN"
+  },
+  {
+   "doc": "v_lohnabrechnung-06",
+   "text": "787938",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-06",
+   "text": "40 260553 P 785",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-07",
+   "text": "MA-24-239",
+   "expected": "personalnummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "v_lohnabrechnung-07",
+   "text": "13 250955 N 245",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-08",
+   "text": "P-8069",
+   "expected": "personalnummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "v_lohnabrechnung-08",
+   "text": "13 111182 B 808",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-09",
+   "text": "MA-78-521",
+   "expected": "personalnummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "v_lohnabrechnung-09",
+   "text": "12 100983 K 199",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-10",
+   "text": "711946",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-10",
+   "text": "13 010653 Y 624",
+   "expected": "sv_nummer",
+   "got": null
+  }
+ ],
+ "false_alarms": [
+  {
+   "doc": "v_aktennotiz-01",
+   "text": "05407 1151",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_aktennotiz-02",
+   "text": "01422 1419",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_aktennotiz-03",
+   "text": "03172 2662",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_aktennotiz-03",
+   "text": "02579 8144",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_aktennotiz-03",
+   "text": "Mail",
+   "label": "E-Mail",
+   "confidence": 0.52
+  },
+  {
+   "doc": "v_aktennotiz-04",
+   "text": "Mail",
+   "label": "E-Mail",
+   "confidence": 0.43
+  },
+  {
+   "doc": "v_aktennotiz-06",
+   "text": "Mail",
+   "label": "E-Mail",
+   "confidence": 0.53
+  },
+  {
+   "doc": "v_aktennotiz-07",
+   "text": "07873 1728",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_aktennotiz-08",
+   "text": "Hotline",
+   "label": "Telefonnummer",
+   "confidence": 0.43
+  },
+  {
+   "doc": "v_aktennotiz-10",
+   "text": "05379 8073",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "0101 7218 2",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.59
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Versicherten-Nr.",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.42
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "0802 8598 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Versicherte",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Arzt",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "01036 4379",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "02960 7395",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Versicherte",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Arzt",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Praxis Dr. Muster",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.5
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Versicherten-Nr.",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.44
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Tel.",
+   "label": "Telefonnummer",
+   "confidence": 0.47
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "07514 1129",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "0378 9712 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "07545 5999",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "0738 7574 5",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "0123 507580",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "0123 273651",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "04656 2916 1",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "0569 5397 9",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "0123 979614",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "08165 3256",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "0123 487234",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "03969 9736",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "0123 410448",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "06777 8782",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "0123 954741",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "0123 277541",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "0123 381885",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "02306 6235",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "04116 3717",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "08933 7535",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "0123 257440",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "0123 801465",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "05209 7462",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_email-01",
+   "text": "Handynummer",
+   "label": "Telefonnummer",
+   "confidence": 0.5
+  },
+  {
+   "doc": "v_email-02",
+   "text": "03153 9960",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "v_email-02",
+   "text": "06282 3091",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "v_email-03",
+   "text": "Referenz 975461",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "v_email-04",
+   "text": "04037 5656",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_email-05",
+   "text": "0679 2703 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_email-05",
+   "text": "Handynummer",
+   "label": "Telefonnummer",
+   "confidence": 0.43
+  },
+  {
+   "doc": "v_email-06",
+   "text": "04381 7456",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-01",
+   "text": "0729 7647 4",
+   "label": "Telefonnummer",
+   "confidence": 0.73
+  },
+  {
+   "doc": "v_ausweiskopie-02",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.66
+  },
+  {
+   "doc": "v_ausweiskopie-04",
+   "text": "0283 1207 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-04",
+   "text": "05063 7361",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-05",
+   "text": "0950 4948 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-07",
+   "text": "Ausweis-Nr",
+   "label": "Ausweisnummer",
+   "confidence": 0.42
+  },
+  {
+   "doc": "v_ausweiskopie-08",
+   "text": "03725 2484",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-08",
+   "text": "0579 8611 9",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-09",
+   "text": "09312 4527",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-10",
+   "text": "09103 1922",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "04629 9170 1",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "0899 6799",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "Steuer-ID",
+   "label": "IBAN",
+   "confidence": 0.52
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "RV-Nummer",
+   "label": "IBAN",
+   "confidence": 0.48
+  },
+  {
+   "doc": "v_lohnabrechnung-02",
+   "text": "0665 8781",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-02",
+   "text": "RV-Nummer",
+   "label": "IBAN",
+   "confidence": 0.52
+  },
+  {
+   "doc": "v_lohnabrechnung-03",
+   "text": "0522 1202",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-03",
+   "text": "RV-Nummer",
+   "label": "Steuer-ID",
+   "confidence": 0.44
+  },
+  {
+   "doc": "v_lohnabrechnung-04",
+   "text": "03992 7033",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-04",
+   "text": "04198 9134 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-04",
+   "text": "0548 7888",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-04",
+   "text": "RV-Nummer",
+   "label": "IBAN",
+   "confidence": 0.42
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "0588 9880",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "RV-Nummer",
+   "label": "IBAN",
+   "confidence": 0.53
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.51
+  },
+  {
+   "doc": "v_lohnabrechnung-06",
+   "text": "09565 3262",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-06",
+   "text": "0758 2052",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-06",
+   "text": "RV-Nummer",
+   "label": "Steuer-ID",
+   "confidence": 0.45
+  },
+  {
+   "doc": "v_lohnabrechnung-07",
+   "text": "05998 5122",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-07",
+   "text": "0598 1631",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-07",
+   "text": "RV-Nummer",
+   "label": "Steuer-ID",
+   "confidence": 0.46
+  },
+  {
+   "doc": "v_lohnabrechnung-08",
+   "text": "0922 1840 1",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-08",
+   "text": "0216 3948",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-08",
+   "text": "RV-Nummer",
+   "label": "IBAN",
+   "confidence": 0.44
+  },
+  {
+   "doc": "v_lohnabrechnung-09",
+   "text": "0297 5724",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-09",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.49
+  },
+  {
+   "doc": "v_lohnabrechnung-09",
+   "text": "RV-Nummer",
+   "label": "Steuer-ID",
+   "confidence": 0.46
+  },
+  {
+   "doc": "v_lohnabrechnung-10",
+   "text": "03296 1865",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-10",
+   "text": "0231 7848",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  }
+ ]
+}

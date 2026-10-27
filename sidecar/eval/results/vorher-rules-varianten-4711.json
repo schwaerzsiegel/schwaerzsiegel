@@ -1,0 +1,2077 @@
+{
+ "mode": "rules",
+ "seed": 4711,
+ "corpus": "varianten",
+ "documents": 60,
+ "seconds": 1.1,
+ "micro": {
+  "tp": 90,
+  "fn": 270,
+  "fp": 55,
+  "precision": 0.6206896551724138,
+  "recall": 0.25,
+  "f1": 0.3564356435643564
+ },
+ "coverage": 0.3209054593874834,
+ "per_category": {
+  "person": {
+   "tp": 0,
+   "fn": 80,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "adresse": {
+   "tp": 0,
+   "fn": 60,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "telefon": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 55,
+   "precision": 0.26666666666666666,
+   "recall": 1.0,
+   "f1": 0.4210526315789474
+  },
+  "email": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsdatum": {
+   "tp": 0,
+   "fn": 30,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "geburtsort": {
+   "tp": 0,
+   "fn": 20,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "personalnummer": {
+   "tp": 0,
+   "fn": 30,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 0,
+   "fn": 10,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "sv_nummer": {
+   "tp": 0,
+   "fn": 20,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "steuer_id": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "kv_nummer": {
+   "tp": 0,
+   "fn": 10,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "gesundheit": {
+   "tp": 10,
+   "fn": 10,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.5,
+   "f1": 0.6666666666666666
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {
+  "geburtsdatum -> neutral": 11,
+  "geburtsdatum -> telefon": 2
+ },
+ "missed": [
+  {
+   "doc": "v_aktennotiz-01",
+   "text": "Sophie Dietrich",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-01",
+   "text": "584217",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-01",
+   "text": "Schillerplatz 119a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-01",
+   "text": "97543 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-01",
+   "text": "584217",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-02",
+   "text": "Leonie Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-02",
+   "text": "087867",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-02",
+   "text": "Uferdamm 97a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-02",
+   "text": "15844 München",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-02",
+   "text": "087867",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-03",
+   "text": "Olga Vogel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-03",
+   "text": "098533",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-03",
+   "text": "Am Mühlbach 102a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-03",
+   "text": "86974 Frankfurt am Main",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-03",
+   "text": "098533",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-04",
+   "text": "Erika Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-04",
+   "text": "MA-64-304",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-04",
+   "text": "Am Mühlbach 38",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-04",
+   "text": "76945 Bremen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-04",
+   "text": "MA-64-304",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-05",
+   "text": "Leonie Vogel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-05",
+   "text": "P-83536",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-05",
+   "text": "Uferdamm 52a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-05",
+   "text": "19584 Musterhausen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-05",
+   "text": "P-83536",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-06",
+   "text": "Piotr Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-06",
+   "text": "15474",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-06",
+   "text": "Schillerplatz 97",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-06",
+   "text": "89893 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-06",
+   "text": "15474",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-07",
+   "text": "Ben Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-07",
+   "text": "016662",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-07",
+   "text": "Gartenstraße 116b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-07",
+   "text": "69552 Musterhausen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-07",
+   "text": "016662",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-08",
+   "text": "Olga Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-08",
+   "text": "MA-29-162",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-08",
+   "text": "Rosenweg 93a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-08",
+   "text": "55110 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-08",
+   "text": "MA-29-162",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-09",
+   "text": "Lena Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-09",
+   "text": "P-73654",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-09",
+   "text": "Lindenallee 108a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-09",
+   "text": "50716 Beispielstadt",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-09",
+   "text": "P-73654",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-10",
+   "text": "Aylin Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-10",
+   "text": "058302",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-10",
+   "text": "Bahnhofstr. 52",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-10",
+   "text": "66358 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_aktennotiz-10",
+   "text": "058302",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Elias",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "24.12.2004",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Hannover",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "U556450542",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Wagner",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Jonas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "26. Februar 1954",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Hannover",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "C128032691",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Asthma bronchiale",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Noah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "7. September 1987",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Beispielstadt",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "M964324504",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Essentielle Hypertonie",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Noah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "11.04.1958",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Bremen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "E112775744",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Ben",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "23. Januar 1981",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Beispielstadt",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Z715497126",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Migräne",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Lena",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "5. Januar 1997",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Musterhausen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "F325098330",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Migräne",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Piotr",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "28.05.1985",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Frankfurt am Main",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "D385186057",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Lena",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "23.08.1982",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Bad Musterberg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "E925802998",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Lumbago",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Haas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Erika",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "21. Oktober 1951",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "S107529810",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Paul",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "26.05.1962",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "G037132122",
+   "expected": "kv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Asthma bronchiale",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "Felix Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "Lindenallee 60b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "68874 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "9. September 1989",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "15 090989 S 683",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "Hannah Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "Hauptstraße 113",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "10308 Musterhausen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "26. Juli 2000",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "12 260700 M 412",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "Hannah Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "Musterweg 105a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "33847 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "24.09.1968",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "13 240968 P 032",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "Erika Brandt",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "Rosenweg 108",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "19672 Leipzig",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "11.08.1957",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "40 110857 B 310",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "Greta Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "Kirchgasse 116",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "60741 Beispielstadt",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "9. September 1978",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "65 090978 B 819",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "Mehmet Busch",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "Lindenallee 95a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "12304 Kiel",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "9. Juli 1987",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "53 090787 B 028",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "Ben Vogel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "Schillerplatz 10",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "34071 Berlin",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "01.06.1984",
+   "expected": "geburtsdatum",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "53 010684 V 206",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "Lukas Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "Uferdamm 54a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "86493 Beispielstadt",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "21.01.1968",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "12 210168 Y 480",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "Erika Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "Hauptstraße 51",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "31545 Musterhausen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "2. Februar 1979",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "40 020279 N 568",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "Chiara Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "Uferdamm 49b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "50790 Leipzig",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "6. Februar 1984",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "40 060284 F 829",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_email-01",
+   "text": "Mehmet Kowalski",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-01",
+   "text": "Schillerplatz 82",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-01",
+   "text": "75625 Nürnberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-01",
+   "text": "Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-02",
+   "text": "Jonas Hoffmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-02",
+   "text": "Kirchgasse 16b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-02",
+   "text": "34478 Kiel",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-02",
+   "text": "Jonas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-03",
+   "text": "Leonie Yilmaz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-03",
+   "text": "Lindenallee 4",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-03",
+   "text": "83958 Hamburg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-03",
+   "text": "Leonie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-04",
+   "text": "Erika Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-04",
+   "text": "Kirchgasse 83b",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-04",
+   "text": "78875 Leipzig",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-04",
+   "text": "Erika",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-05",
+   "text": "Sophie Mustermann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-05",
+   "text": "Lindenallee 104a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-05",
+   "text": "82919 Nürnberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-05",
+   "text": "Sophie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-06",
+   "text": "Marie Schäfer",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-06",
+   "text": "Musterweg 3",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-06",
+   "text": "82786 Berlin",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-06",
+   "text": "Marie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-07",
+   "text": "Max Wagner",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-07",
+   "text": "Am Mühlbach 25a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-07",
+   "text": "61297 Beispielstadt",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-07",
+   "text": "Max",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-08",
+   "text": "Mia Krüger",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-08",
+   "text": "Hauptstraße 12a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-08",
+   "text": "52636 München",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-08",
+   "text": "Mia",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-09",
+   "text": "Lukas Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-09",
+   "text": "Bahnhofstr. 63a",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-09",
+   "text": "33601 Nürnberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-09",
+   "text": "Lukas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-10",
+   "text": "Hannah Schulz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-10",
+   "text": "Kirchgasse 59",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-10",
+   "text": "43938 Musterhausen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "v_email-10",
+   "text": "Hannah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-01",
+   "text": "RK85040W24",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-01",
+   "text": "Nowak, Jonas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-01",
+   "text": "24. Januar 1959",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-01",
+   "text": "Bad Musterberg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-02",
+   "text": "W2M94WG528",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-02",
+   "text": "Seidel, Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-02",
+   "text": "9. Juni 1966",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-02",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-03",
+   "text": "XNH6X4RP28",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-03",
+   "text": "Becker, Greta",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-03",
+   "text": "11. November 1965",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-03",
+   "text": "München",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-04",
+   "text": "RT32304996",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-04",
+   "text": "Schulz, Clara",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-04",
+   "text": "19. November 1952",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-04",
+   "text": "Bremen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-05",
+   "text": "MY6Y1Y14T5",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-05",
+   "text": "Hoffmann, Greta",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-05",
+   "text": "28. Januar 2000",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-05",
+   "text": "Nürnberg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-06",
+   "text": "T7T5PH5XN7",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-06",
+   "text": "Mustermann, Aylin",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-06",
+   "text": "15.04.1975",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-06",
+   "text": "Berlin",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-07",
+   "text": "RT0VN9GL17",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-07",
+   "text": "Wagner, Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-07",
+   "text": "25.04.2002",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-07",
+   "text": "Dresden",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-08",
+   "text": "R7Y0GWYCV9",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-08",
+   "text": "Vogel, Greta",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-08",
+   "text": "09.08.1985",
+   "expected": "geburtsdatum",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "v_ausweiskopie-08",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-09",
+   "text": "X65667VMW6",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-09",
+   "text": "Busch, Clara",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-09",
+   "text": "25. Mai 1968",
+   "expected": "geburtsdatum",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-09",
+   "text": "Dresden",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-10",
+   "text": "X3C5H0WMG4",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-10",
+   "text": "Hoffmann, Erika",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_ausweiskopie-10",
+   "text": "21.11.1951",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "v_ausweiskopie-10",
+   "text": "Bad Musterberg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "Mia Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "684769",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "40 240685 S 274",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-02",
+   "text": "Felix Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-02",
+   "text": "MA-88-308",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-02",
+   "text": "40 160560 N 939",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-03",
+   "text": "Lena Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-03",
+   "text": "P-1762",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-03",
+   "text": "65 150263 N 751",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-04",
+   "text": "Hannah Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-04",
+   "text": "P-68469",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-04",
+   "text": "12 120302 F 872",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "Sophie Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "P-20488",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "15 190288 L 873",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-06",
+   "text": "Mia Petersen-Lohmann",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-06",
+   "text": "MA-67-897",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-06",
+   "text": "65 121083 P 847",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-07",
+   "text": "Lukas Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-07",
+   "text": "P-53150",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-07",
+   "text": "12 130669 F 972",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-08",
+   "text": "Mia Seidel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-08",
+   "text": "P-67979",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-08",
+   "text": "53 090790 S 088",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-09",
+   "text": "Clara Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-09",
+   "text": "P-32784",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-09",
+   "text": "40 150690 M 780",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-10",
+   "text": "Erika Becker",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-10",
+   "text": "MA-43-618",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "v_lohnabrechnung-10",
+   "text": "13 150981 B 354",
+   "expected": "sv_nummer",
+   "got": null
+  }
+ ],
+ "false_alarms": [
+  {
+   "doc": "v_aktennotiz-01",
+   "text": "01804 5141",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_aktennotiz-01",
+   "text": "0786 4459 9",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_aktennotiz-02",
+   "text": "0570 4431 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_aktennotiz-06",
+   "text": "05740 8986",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_aktennotiz-09",
+   "text": "08503 4327",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_aktennotiz-09",
+   "text": "05744 9575",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "04205 6325 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "02316 9050",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "07467 9448",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "04549 9800 6",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "07396 1054",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "0123 994096",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "06581 7714",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "0123 452934",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "0123 770961",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "0123 364392",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "02505 9184",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "0123 200890",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "0123 655589",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "08496 2946",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "02666 2385",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "0626 4477 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "0123 546867",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "04519 4863 9",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "0123 957162",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "0123 648554",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "0123 146318",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_email-04",
+   "text": "06826 1609",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_email-07",
+   "text": "03000 7004",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_email-08",
+   "text": "07467 4051",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_email-08",
+   "text": "07628 4290",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_email-09",
+   "text": "04837 4914 4",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-01",
+   "text": "0232 3636 2",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-03",
+   "text": "0984 6769 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-04",
+   "text": "04663 5298 2",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_ausweiskopie-05",
+   "text": "0420 1258 4",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-01",
+   "text": "0827 5374",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-02",
+   "text": "07641 3611",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-02",
+   "text": "0419 7186",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-03",
+   "text": "0894 3879",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-04",
+   "text": "0908 6707",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "0384 5367 5",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "0463 8013",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-05",
+   "text": "0994 1112 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-06",
+   "text": "0556 8871 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-06",
+   "text": "0546 3822",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-07",
+   "text": "0828 1664",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-08",
+   "text": "09766 2343",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-08",
+   "text": "0927 3683",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-09",
+   "text": "09342 2053",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-09",
+   "text": "0103 7321",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-10",
+   "text": "06342 2990",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "v_lohnabrechnung-10",
+   "text": "0523 1879",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  }
+ ]
+}

@@ -1,0 +1,1978 @@
+{
+ "mode": "fast",
+ "seed": 2026,
+ "documents": 60,
+ "seconds": 50.8,
+ "micro": {
+  "tp": 292,
+  "fn": 158,
+  "fp": 203,
+  "precision": 0.5898989898989899,
+  "recall": 0.6488888888888888,
+  "f1": 0.617989417989418
+ },
+ "coverage": 0.8108974358974359,
+ "per_category": {
+  "person": {
+   "tp": 70,
+   "fn": 0,
+   "fp": 18,
+   "precision": 0.7954545454545454,
+   "recall": 1.0,
+   "f1": 0.8860759493670886
+  },
+  "adresse": {
+   "tp": 85,
+   "fn": 15,
+   "fp": 19,
+   "precision": 0.8173076923076923,
+   "recall": 0.85,
+   "f1": 0.8333333333333334
+  },
+  "telefon": {
+   "tp": 48,
+   "fn": 2,
+   "fp": 74,
+   "precision": 0.39344262295081966,
+   "recall": 0.96,
+   "f1": 0.5581395348837209
+  },
+  "email": {
+   "tp": 9,
+   "fn": 11,
+   "fp": 4,
+   "precision": 0.6923076923076923,
+   "recall": 0.45,
+   "f1": 0.5454545454545455
+  },
+  "geburtsdatum": {
+   "tp": 8,
+   "fn": 22,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.26666666666666666,
+   "f1": 0.4210526315789474
+  },
+  "geburtsort": {
+   "tp": 0,
+   "fn": 20,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "personalnummer": {
+   "tp": 0,
+   "fn": 30,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 44,
+   "precision": 0.3125,
+   "recall": 1.0,
+   "f1": 0.47619047619047616
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 10,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 0,
+   "fn": 10,
+   "fp": 1,
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "sv_nummer": {
+   "tp": 3,
+   "fn": 17,
+   "fp": 33,
+   "precision": 0.08333333333333333,
+   "recall": 0.15,
+   "f1": 0.10714285714285714
+  },
+  "steuer_id": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 10,
+   "precision": 0.75,
+   "recall": 1.0,
+   "f1": 0.8571428571428571
+  },
+  "kv_nummer": {
+   "tp": 0,
+   "fn": 10,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  "gesundheit": {
+   "tp": 19,
+   "fn": 11,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.6333333333333333,
+   "f1": 0.7755102040816326
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {
+  "geburtsdatum -> neutral": 21,
+  "email -> person": 11,
+  "kv_nummer -> sv_nummer": 10,
+  "bankverbindung -> iban": 10,
+  "sv_nummer -> steuer_id": 10,
+  "personalnummer -> adresse": 6,
+  "adresse -> telefon": 3,
+  "sv_nummer -> iban": 2,
+  "geburtsort -> adresse": 1,
+  "telefon -> email": 1,
+  "geburtsdatum -> telefon": 1,
+  "telefon -> adresse": 1
+ },
+ "missed": [
+  {
+   "doc": "personalakte-01",
+   "text": "MA-42-673",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-01",
+   "text": "17. September 1991",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-01",
+   "text": "Frankfurt am Main",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-01",
+   "text": "53 170991 N 281",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "MA-59-175",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "marie.lorenz@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "26.09.1981",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "53 260981 L 160",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "P-82367",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "30170 Hannover",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "aylin.petersen-lohmann@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "10. August 1970",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "Musterhausen",
+   "expected": "geburtsort",
+   "got": "Adresse"
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "P-40615",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "paul.becker@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "22. Januar 1998",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "65 220198 B 401",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "P-76055",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "18.01.1992",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "Kiel",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "12 180192 S 456",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "MA-69-325",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "aylin.franke@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "9. Mai 1952",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "Kiel",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "12 090552 F 085",
+   "expected": "sv_nummer",
+   "got": "IBAN"
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "P-55662",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "24.03.1977",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "München",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "53 240377 P 800",
+   "expected": "sv_nummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "698895",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "27463 Beispielstadt",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "aylin.busch@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "16. Mai 1981",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "Köln",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "596832",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "0176 6252807",
+   "expected": "telefon",
+   "got": "E-Mail"
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "sophie.lorenz@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "6. März 1994",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "Beispielstadt",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "P-70517",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "27.09.2002",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "Dresden",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "65 270902 F 278",
+   "expected": "sv_nummer",
+   "got": "IBAN"
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "R385642713",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "Sertralin 50 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "N745219801",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "Ibuprofen 400 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "R111361792",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "Metformin 500 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "T487464394",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "Metformin 500 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "28. Juli 1998",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "X602780468",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "Metformin 500 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "21.03.2000",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "P192948083",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "Salbutamol-Spray",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "D087526236",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "Sertralin 50 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "A801000520",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "Sertralin 50 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "X299239816",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "Salbutamol-Spray",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "B133252692",
+   "expected": "kv_nummer",
+   "got": "Sozialversicherungsnummer"
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "Diabetes mellitus Typ 2",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "Metformin 500 mg",
+   "expected": "gesundheit",
+   "got": null
+  },
+  {
+   "doc": "bankformular-01",
+   "text": "2352330029",
+   "expected": "bankverbindung",
+   "got": "IBAN"
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "2015882924",
+   "expected": "bankverbindung",
+   "got": "IBAN"
+  },
+  {
+   "doc": "bankformular-03",
+   "text": "7680003716",
+   "expected": "bankverbindung",
+   "got": "IBAN"
+  },
+  {
+   "doc": "bankformular-04",
+   "text": "2654873744",
+   "expected": "bankverbindung",
+   "got": "IBAN"
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "3263084112",
+   "expected": "bankverbindung",
+   "got": "IBAN"
+  },
+  {
+   "doc": "bankformular-06",
+   "text": "9552357894",
+   "expected": "bankverbindung",
+   "got": "IBAN"
+  },
+  {
+   "doc": "bankformular-07",
+   "text": "6071636134",
+   "expected": "bankverbindung",
+   "got": "IBAN"
+  },
+  {
+   "doc": "bankformular-08",
+   "text": "2017682360",
+   "expected": "bankverbindung",
+   "got": "IBAN"
+  },
+  {
+   "doc": "bankformular-09",
+   "text": "8034248560",
+   "expected": "bankverbindung",
+   "got": "IBAN"
+  },
+  {
+   "doc": "bankformular-10",
+   "text": "499772186",
+   "expected": "bankverbindung",
+   "got": "IBAN"
+  },
+  {
+   "doc": "lebenslauf-01",
+   "text": "paul.schaefer@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "lebenslauf-01",
+   "text": "3. Mai 1993",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-01",
+   "text": "Nürnberg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-02",
+   "text": "37667 Musterhausen",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-02",
+   "text": "13.02.1985",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-02",
+   "text": "Musterhausen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-03",
+   "text": "13. März 1958",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-03",
+   "text": "München",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "paul.albrecht@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "11. Januar 1990",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "München",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-05",
+   "text": "lena.schaefer@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "lebenslauf-05",
+   "text": "04.09.1985",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-05",
+   "text": "Musterhausen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-06",
+   "text": "69039 Kiel",
+   "expected": "adresse",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "lebenslauf-06",
+   "text": "04.01.2000",
+   "expected": "geburtsdatum",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "lebenslauf-06",
+   "text": "Dresden",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-07",
+   "text": "27. Oktober 2000",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-07",
+   "text": "Leipzig",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-08",
+   "text": "89022 Kiel",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-08",
+   "text": "mschaefer@mail.example.com",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "lebenslauf-08",
+   "text": "28.07.1999",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-08",
+   "text": "Musterhausen",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-09",
+   "text": "26764 Musterhausen",
+   "expected": "adresse",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "lebenslauf-09",
+   "text": "mehmet.yilmaz@example.org",
+   "expected": "email",
+   "got": "Person"
+  },
+  {
+   "doc": "lebenslauf-09",
+   "text": "14. März 1992",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-09",
+   "text": "Leipzig",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "91703 Bad Musterberg",
+   "expected": "adresse",
+   "got": "Telefonnummer"
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "19.09.1989",
+   "expected": "geburtsdatum",
+   "got": "Datum"
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "Hamburg",
+   "expected": "geburtsort",
+   "got": null
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "040-162281",
+   "expected": "telefon",
+   "got": "Adresse"
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "TMCJRPPG36",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "65 121077 A 988",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "MA-22-580",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "P0H9K2VMN3",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "65 161090 F 254",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "080476",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-03",
+   "text": "YW4W0LHN12",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-03",
+   "text": "13 080995 B 093",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "behoerde-03",
+   "text": "P-93155",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-04",
+   "text": "RPJRMH7KC6",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-04",
+   "text": "13 151195 H 231",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "behoerde-04",
+   "text": "P-93155",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-05",
+   "text": "RVFPZZ15W6",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-05",
+   "text": "15 071162 N 093",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "behoerde-05",
+   "text": "MA-71-959",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-06",
+   "text": "N9MJ3TFG60",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-06",
+   "text": "12 050782 B 010",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "behoerde-06",
+   "text": "P-62447",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-07",
+   "text": "LYHCG3LVK1",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-07",
+   "text": "13 210797 L 067",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "behoerde-07",
+   "text": "MA-35-894",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "MR7Z9Z5G68",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "12 030672 Y 718",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "P-9561",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-09",
+   "text": "RKG9C97LX8",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-09",
+   "text": "53 070666 K 783",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "behoerde-09",
+   "text": "P-66579",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "behoerde-10",
+   "text": "W01YCJ0R32",
+   "expected": "ausweis",
+   "got": null
+  },
+  {
+   "doc": "behoerde-10",
+   "text": "12 040684 L 713",
+   "expected": "sv_nummer",
+   "got": "Steuer-ID"
+  },
+  {
+   "doc": "behoerde-10",
+   "text": "P-20541",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "67856 Dresden",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "MA-79-246",
+   "expected": "personalnummer",
+   "got": "Adresse"
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "58581 Köln",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "P-49386",
+   "expected": "personalnummer",
+   "got": "Adresse"
+  },
+  {
+   "doc": "rechnung-03",
+   "text": "MA-46-116",
+   "expected": "personalnummer",
+   "got": "Adresse"
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "19993 Hamburg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "074905",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "43972 Berlin",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "P-56251",
+   "expected": "personalnummer",
+   "got": "Adresse"
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "53056 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "741585",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "96791 Bad Musterberg",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "MA-39-840",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "99170 Dresden",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "P-52421",
+   "expected": "personalnummer",
+   "got": null
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "MA-41-407",
+   "expected": "personalnummer",
+   "got": "Adresse"
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "51484 Köln",
+   "expected": "adresse",
+   "got": null
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "605059",
+   "expected": "personalnummer",
+   "got": "Adresse"
+  }
+ ],
+ "false_alarms": [
+  {
+   "doc": "personalakte-01",
+   "text": "05407 1151",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-01",
+   "text": "Telefon",
+   "label": "E-Mail",
+   "confidence": 0.47
+  },
+  {
+   "doc": "personalakte-02",
+   "text": "Telefon",
+   "label": "Telefonnummer",
+   "confidence": 0.48
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "02579 8144",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-03",
+   "text": "Telefon",
+   "label": "Telefonnummer",
+   "confidence": 0.46
+  },
+  {
+   "doc": "personalakte-04",
+   "text": "Telefon",
+   "label": "Telefonnummer",
+   "confidence": 0.48
+  },
+  {
+   "doc": "personalakte-05",
+   "text": "Telefon",
+   "label": "Telefonnummer",
+   "confidence": 0.49
+  },
+  {
+   "doc": "personalakte-06",
+   "text": "Telefon",
+   "label": "Telefonnummer",
+   "confidence": 0.41
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "0663 9411 4",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "06628 6692",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-07",
+   "text": "Telefon",
+   "label": "E-Mail",
+   "confidence": 0.45
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "09852 6843",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "Telefon",
+   "label": "Telefonnummer",
+   "confidence": 0.45
+  },
+  {
+   "doc": "personalakte-08",
+   "text": "Steuer-ID",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.4
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "Telefon",
+   "label": "Telefonnummer",
+   "confidence": 0.41
+  },
+  {
+   "doc": "personalakte-09",
+   "text": "Steuer-ID",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.44
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "0924 7814 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "Telefon",
+   "label": "E-Mail",
+   "confidence": 0.56
+  },
+  {
+   "doc": "personalakte-10",
+   "text": "Steuer-ID",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.43
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "04744 7858 6",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-01",
+   "text": "Versichertennummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.59
+  },
+  {
+   "doc": "arztbrief-02",
+   "text": "09895 9818",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-03",
+   "text": "Versichertennummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.53
+  },
+  {
+   "doc": "arztbrief-04",
+   "text": "Versichertennummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.43
+  },
+  {
+   "doc": "arztbrief-05",
+   "text": "Versichertennummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.48
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "05892 3145",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.64
+  },
+  {
+   "doc": "arztbrief-06",
+   "text": "Versichertennummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.41
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "04912 6418",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "0857 5390 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-07",
+   "text": "Versichertennummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.5
+  },
+  {
+   "doc": "arztbrief-08",
+   "text": "Versichertennummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "06145 5256",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "Patient",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "arztbrief-09",
+   "text": "Versichertennummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.49
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "Referenz 654286",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.55
+  },
+  {
+   "doc": "arztbrief-10",
+   "text": "Versichertennummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.43
+  },
+  {
+   "doc": "bankformular-01",
+   "text": "BIC",
+   "label": "IBAN",
+   "confidence": 0.67
+  },
+  {
+   "doc": "bankformular-01",
+   "text": "MUSTDEFFXXX",
+   "label": "IBAN",
+   "confidence": 0.64
+  },
+  {
+   "doc": "bankformular-01",
+   "text": "Steuerliche Identifikationsnummer",
+   "label": "IBAN",
+   "confidence": 0.72
+  },
+  {
+   "doc": "bankformular-01",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.55
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "01734 4998",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.42
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "BIC",
+   "label": "IBAN",
+   "confidence": 0.64
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "MUSTDEFFXXX",
+   "label": "IBAN",
+   "confidence": 0.65
+  },
+  {
+   "doc": "bankformular-02",
+   "text": "Steuerliche Identifikationsnummer",
+   "label": "IBAN",
+   "confidence": 0.71
+  },
+  {
+   "doc": "bankformular-03",
+   "text": "04815 8774 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-03",
+   "text": "BIC",
+   "label": "IBAN",
+   "confidence": 0.65
+  },
+  {
+   "doc": "bankformular-03",
+   "text": "MUSTDEFFXXX",
+   "label": "IBAN",
+   "confidence": 0.63
+  },
+  {
+   "doc": "bankformular-03",
+   "text": "Steuerliche Identifikationsnummer",
+   "label": "IBAN",
+   "confidence": 0.7
+  },
+  {
+   "doc": "bankformular-04",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.5
+  },
+  {
+   "doc": "bankformular-04",
+   "text": "BIC",
+   "label": "IBAN",
+   "confidence": 0.66
+  },
+  {
+   "doc": "bankformular-04",
+   "text": "MUSTDEFFXXX",
+   "label": "IBAN",
+   "confidence": 0.64
+  },
+  {
+   "doc": "bankformular-04",
+   "text": "Steuerliche Identifikationsnummer",
+   "label": "IBAN",
+   "confidence": 0.75
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "05375 9215",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "05350 9328",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "BIC",
+   "label": "IBAN",
+   "confidence": 0.53
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "MUSTDEFFXXX",
+   "label": "IBAN",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-05",
+   "text": "Steuerliche Identifikationsnummer",
+   "label": "IBAN",
+   "confidence": 0.59
+  },
+  {
+   "doc": "bankformular-06",
+   "text": "07263 8180",
+   "label": "IBAN",
+   "confidence": 0.66
+  },
+  {
+   "doc": "bankformular-06",
+   "text": "BIC",
+   "label": "IBAN",
+   "confidence": 0.64
+  },
+  {
+   "doc": "bankformular-06",
+   "text": "MUSTDEFFXXX",
+   "label": "IBAN",
+   "confidence": 0.61
+  },
+  {
+   "doc": "bankformular-06",
+   "text": "Steuerliche Identifikationsnummer",
+   "label": "IBAN",
+   "confidence": 0.7
+  },
+  {
+   "doc": "bankformular-07",
+   "text": "BIC",
+   "label": "IBAN",
+   "confidence": 0.65
+  },
+  {
+   "doc": "bankformular-07",
+   "text": "MUSTDEFFXXX",
+   "label": "IBAN",
+   "confidence": 0.57
+  },
+  {
+   "doc": "bankformular-07",
+   "text": "Steuerliche Identifikationsnummer",
+   "label": "IBAN",
+   "confidence": 0.75
+  },
+  {
+   "doc": "bankformular-08",
+   "text": "BIC",
+   "label": "IBAN",
+   "confidence": 0.61
+  },
+  {
+   "doc": "bankformular-08",
+   "text": "MUSTDEFFXXX",
+   "label": "IBAN",
+   "confidence": 0.67
+  },
+  {
+   "doc": "bankformular-08",
+   "text": "Referenz 991605",
+   "label": "IBAN",
+   "confidence": 0.45
+  },
+  {
+   "doc": "bankformular-08",
+   "text": "Steuerliche Identifikationsnummer",
+   "label": "IBAN",
+   "confidence": 0.71
+  },
+  {
+   "doc": "bankformular-08",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.55
+  },
+  {
+   "doc": "bankformular-09",
+   "text": "BIC",
+   "label": "IBAN",
+   "confidence": 0.66
+  },
+  {
+   "doc": "bankformular-09",
+   "text": "MUSTDEFFXXX",
+   "label": "IBAN",
+   "confidence": 0.63
+  },
+  {
+   "doc": "bankformular-09",
+   "text": "Steuerliche Identifikationsnummer",
+   "label": "IBAN",
+   "confidence": 0.72
+  },
+  {
+   "doc": "bankformular-10",
+   "text": "04810 2679 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "bankformular-10",
+   "text": "BIC",
+   "label": "IBAN",
+   "confidence": 0.64
+  },
+  {
+   "doc": "bankformular-10",
+   "text": "MUSTDEFFXXX",
+   "label": "IBAN",
+   "confidence": 0.58
+  },
+  {
+   "doc": "bankformular-10",
+   "text": "Steuerliche Identifikationsnummer",
+   "label": "IBAN",
+   "confidence": 0.68
+  },
+  {
+   "doc": "lebenslauf-01",
+   "text": "Referenz 114461",
+   "label": "Telefonnummer",
+   "confidence": 0.45
+  },
+  {
+   "doc": "lebenslauf-03",
+   "text": "03091 3179",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "lebenslauf-04",
+   "text": "04459 5070 4",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "lebenslauf-07",
+   "text": "0635 7940 6",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "lebenslauf-10",
+   "text": "02932 8613",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "04270 1643 5",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "06502 9707",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-01",
+   "text": "Rentenversicherungsnummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.53
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "04624 7733 2",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "02045 6965",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-02",
+   "text": "Rentenversicherungsnummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.53
+  },
+  {
+   "doc": "behoerde-03",
+   "text": "04119 6282 5",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-03",
+   "text": "Rentenversicherungsnummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.5
+  },
+  {
+   "doc": "behoerde-04",
+   "text": "05564 6207",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-04",
+   "text": "Rentenversicherungsnummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.44
+  },
+  {
+   "doc": "behoerde-05",
+   "text": "Rentenversicherungsnummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.59
+  },
+  {
+   "doc": "behoerde-06",
+   "text": "Personalausweisnummer",
+   "label": "Ausweisnummer",
+   "confidence": 0.4
+  },
+  {
+   "doc": "behoerde-06",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.79
+  },
+  {
+   "doc": "behoerde-06",
+   "text": "Rentenversicherungsnummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.49
+  },
+  {
+   "doc": "behoerde-07",
+   "text": "Rentenversicherungsnummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.45
+  },
+  {
+   "doc": "behoerde-07",
+   "text": "Telefonzentrale",
+   "label": "Telefonnummer",
+   "confidence": 0.74
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "07348 5148",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "0575 3203 5",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "behoerde-08",
+   "text": "Rentenversicherungsnummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.55
+  },
+  {
+   "doc": "behoerde-09",
+   "text": "0903 1699 2",
+   "label": "Telefonnummer",
+   "confidence": 0.7
+  },
+  {
+   "doc": "behoerde-09",
+   "text": "Rentenversicherungsnummer",
+   "label": "Sozialversicherungsnummer",
+   "confidence": 0.54
+  },
+  {
+   "doc": "behoerde-10",
+   "text": "01855 8599",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "0815 3990 90",
+   "label": "Telefonnummer",
+   "confidence": 0.78
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "0301 6687 9",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-01",
+   "text": "Industriestraße 5",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "0961 7087 1",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "0815 6799 65",
+   "label": "Telefonnummer",
+   "confidence": 0.63
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "0301 8550 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "Industriestraße 5",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-02",
+   "text": "Kunde",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-03",
+   "text": "0815 8284 80",
+   "label": "Telefonnummer",
+   "confidence": 0.73
+  },
+  {
+   "doc": "rechnung-03",
+   "text": "0301 8781 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-03",
+   "text": "Industriestraße 5",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "0815 4510 83",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "0301 9058 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "Industriestraße 5",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-04",
+   "text": "Kunde",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "04586 8993 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "0815 1599 64",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "0907 6953 6",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "0301 2568 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "Industriestraße 5",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-05",
+   "text": "Kunde",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "0815 5680 84",
+   "label": "Telefonnummer",
+   "confidence": 0.67
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "0301 3940 4",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-06",
+   "text": "Industriestraße 5",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "0815 6722 93",
+   "label": "Telefonnummer",
+   "confidence": 0.65
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "0301 7239 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "0452 2031 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "Industriestraße 5",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-07",
+   "text": "Kunde",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "0815 6540 65",
+   "label": "Telefonnummer",
+   "confidence": 0.66
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "0301 8431 9",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "01503 8683",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-08",
+   "text": "Industriestraße 5",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "0815 1152 75",
+   "label": "Telefonnummer",
+   "confidence": 0.64
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "0301 6556 7",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "0973 2915 2",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "Industriestraße 5",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-09",
+   "text": "Kunde",
+   "label": "Person",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "0815 1062 28",
+   "label": "Telefonnummer",
+   "confidence": 0.61
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "0301 6293 3",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "04426 5268 8",
+   "label": "Telefonnummer",
+   "confidence": 0.6
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "Industriestraße 5",
+   "label": "Adresse",
+   "confidence": 0.9
+  },
+  {
+   "doc": "rechnung-10",
+   "text": "Kunde",
+   "label": "Person",
+   "confidence": 0.9
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "mode": "fast",
+ "seed": 2026,
+ "corpus": "varianten",
+ "documents": 60,
+ "seconds": 47.3,
+ "micro": {
+  "tp": 358,
+  "fn": 2,
+  "fp": 2,
+  "precision": 0.9944444444444445,
+  "recall": 0.9944444444444445,
+  "f1": 0.9944444444444445
+ },
+ "coverage": 0.9973262032085561,
+ "per_category": {
+  "person": {
+   "tp": 78,
+   "fn": 2,
+   "fp": 1,
+   "precision": 0.9873417721518988,
+   "recall": 0.975,
+   "f1": 0.9811320754716981
+  },
+  "adresse": {
+   "tp": 60,
+   "fn": 0,
+   "fp": 1,
+   "precision": 0.9836065573770492,
+   "recall": 1.0,
+   "f1": 0.9917355371900827
+  },
+  "telefon": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "email": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsdatum": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsort": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "personalnummer": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "sv_nummer": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "steuer_id": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "kv_nummer": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "gesundheit": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {},
+ "missed": [
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Beispiel",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Beispiel",
+   "expected": "person",
+   "got": null
+  }
+ ],
+ "false_alarms": [
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Praxis Dr. Muster,",
+   "label": "Person",
+   "confidence": 0.44
+  },
+  {
+   "doc": "v_email-03",
+   "text": "Referenz 975461",
+   "label": "Adresse",
+   "confidence": 0.41
+  }
+ ]
+}

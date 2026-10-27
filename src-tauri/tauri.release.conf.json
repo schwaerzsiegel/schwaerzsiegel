@@ -1,0 +1,11 @@
+{
+  "bundle": {
+    "resources": {
+      "../sidecar/dist/redaction-sidecar/": "sidecar/",
+      "../LICENSE": "LICENSE.txt",
+      "lizenzhinweise/QUELLCODE.txt": "QUELLCODE.txt",
+      "lizenzhinweise/DRITTANBIETER-LIZENZEN.txt": "DRITTANBIETER-LIZENZEN.txt",
+      "lizenzhinweise/schwaerzsiegel-sbom.cdx.json": "schwaerzsiegel-sbom.cdx.json"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+fastapi==0.115.*
+python-multipart==0.0.*
+uvicorn==0.32.*
+# Phase 11: genau diese Version - ihr Quellcode (mit MuPDF 1.24.11) wird mit ausgeliefert
+pymupdf==1.24.14
+pytesseract==0.3.*
+gliner==0.2.*
+llama-cpp-python==0.3.*
+# ultralytics entfernt: wird nicht mehr verwendet (siehe pdf_processor.py), zog nur torchvision mit
+pydantic==2.9.*
+# Phase 12: wird direkt benutzt (Prüfung des freien Arbeitsspeichers), fehlte bisher
+psutil==7.*
+# transformers lädt damit den Tokenizer von GLiNER (Schnell-KI); ohne protobuf startet keine KI.
+# Ist nur optional angegeben und fehlte deshalb im ersten Cloud-Build.
+protobuf==7.*
