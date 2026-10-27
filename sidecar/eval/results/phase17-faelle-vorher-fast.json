@@ -1,0 +1,311 @@
+{
+ "mode": "fast",
+ "ok": 7,
+ "faelle": 28,
+ "ergebnisse": [
+  {
+   "zeile": "Geburtsdatum: 12.05.1980",
+   "erwartung": "ja",
+   "kategorie": "Geburtsdatum",
+   "ok": true,
+   "gefunden": [
+    {
+     "label": "Geburtsdatum",
+     "text": "12.05.1980",
+     "vorausgewaehlt": true
+    }
+   ]
+  },
+  {
+   "zeile": "Herr Seidel ist geboren am 12.05.1980.",
+   "erwartung": "ja",
+   "kategorie": "Geburtsdatum",
+   "ok": true,
+   "gefunden": [
+    {
+     "label": "Geburtsdatum",
+     "text": "12.05.1980.",
+     "vorausgewaehlt": true
+    }
+   ]
+  },
+  {
+   "zeile": "Herr Becker ist am 02.02.2024 verstorben.",
+   "erwartung": "ja",
+   "kategorie": "Sterbedatum",
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Datum",
+     "text": "02.02.2024",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Sterbedatum: 17.08.2023",
+   "erwartung": "ja",
+   "kategorie": "Sterbedatum",
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Datum",
+     "text": "17.08.2023",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Org.-Z. 1",
+   "erwartung": "ja",
+   "kategorie": "Organisationszeichen",
+   "ok": false,
+   "gefunden": []
+  },
+  {
+   "zeile": "Org.-Z. 1.1",
+   "erwartung": "ja",
+   "kategorie": "Organisationszeichen",
+   "ok": false,
+   "gefunden": []
+  },
+  {
+   "zeile": "Org.-Z. 131",
+   "erwartung": "ja",
+   "kategorie": "Organisationszeichen",
+   "ok": false,
+   "gefunden": []
+  },
+  {
+   "zeile": "Org.-Z. 131.01",
+   "erwartung": "ja",
+   "kategorie": "Organisationszeichen",
+   "ok": false,
+   "gefunden": []
+  },
+  {
+   "zeile": "Org.Z. 1211.01a",
+   "erwartung": "ja",
+   "kategorie": "Organisationszeichen",
+   "ok": false,
+   "gefunden": []
+  },
+  {
+   "zeile": "Org.-Zeichen: 311.345c",
+   "erwartung": "ja",
+   "kategorie": "Organisationszeichen",
+   "ok": false,
+   "gefunden": []
+  },
+  {
+   "zeile": "Organisationskennzeichen: 12b",
+   "erwartung": "ja",
+   "kategorie": "Organisationszeichen",
+   "ok": false,
+   "gefunden": []
+  },
+  {
+   "zeile": "Praxis Dr. Erika Mustermann",
+   "erwartung": "ja",
+   "kategorie": null,
+   "ok": true,
+   "gefunden": [
+    {
+     "label": "Person",
+     "text": "Praxis Dr. Erika Mustermann",
+     "vorausgewaehlt": true
+    }
+   ]
+  },
+  {
+   "zeile": "Malermeister Jonas Becker e.K.",
+   "erwartung": "ja",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Organisation",
+     "text": "Malermeister Jonas Becker e.K.",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Dokument erstellt am 12.05.2025",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Datum",
+     "text": "12.05.2025",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Besprechung am 15.06.2025",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Datum",
+     "text": "15.06.2025",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Frist bis zum 31.12.2025",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Datum",
+     "text": "31.12.2025",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Kiel, 03.02.2026",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Datum",
+     "text": "03.02.2026",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Eingang: 07.01.2026",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Datum",
+     "text": "07.01.2026",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Siemens AG",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Organisation",
+     "text": "Siemens AG",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Deutsche Bahn AG",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Organisation",
+     "text": "Deutsche Bahn AG",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Stadtverwaltung Kiel",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Organisation",
+     "text": "Stadtverwaltung Kiel",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Bundesagentur für Arbeit",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Organisation",
+     "text": "Bundesagentur für Arbeit",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Muster GmbH",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Organisation",
+     "text": "Muster GmbH",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Müller GmbH",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": false,
+   "gefunden": [
+    {
+     "label": "Organisation",
+     "text": "Müller GmbH",
+     "vorausgewaehlt": false
+    }
+   ]
+  },
+  {
+   "zeile": "Die Abrechnung erfolgt nach Ziffer 131.01 der Gebührenordnung.",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": true,
+   "gefunden": []
+  },
+  {
+   "zeile": "Artikel 311.345c wurde geliefert.",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": true,
+   "gefunden": []
+  },
+  {
+   "zeile": "Org.-Z. 131.01d",
+   "erwartung": "nein",
+   "kategorie": null,
+   "ok": true,
+   "gefunden": []
+  },
+  {
+   "zeile": "Frau Albrecht, 04.11.1971, beantragt Elternzeit.",
+   "erwartung": "möglich",
+   "kategorie": null,
+   "ok": true,
+   "gefunden": [
+    {
+     "label": "Datum",
+     "text": "04.11.1971,",
+     "vorausgewaehlt": false
+    }
+   ]
+  }
+ ]
+}

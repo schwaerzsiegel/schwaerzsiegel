@@ -69,14 +69,14 @@ class ContextBeatsFormatTests(unittest.TestCase):
         results = detect("030 12345678")
         self.assertTrue(all(r["confidence"] < 0.75 for r in results if r["label"] == "Telefonnummer"))
 
-    def test_birth_date_by_context_plain_date_stays_visible(self):
+    def test_birth_date_by_context_plain_date_not_proposed(self):
+        # Phase 17 (Auftrag vom 27.10.2026): ein allgemeines Datum wird gar nicht mehr vorgeschlagen,
+        # vorher stand es abgewählt in der Liste.
         results = detect("Geburtsdatum: 12.03.1985", "Brief vom 17.10.2026")
         birth = [r for r in results if "12.03.1985" in r["text"]][0]
-        letter = [r for r in results if "17.10.2026" in r["text"]][0]
         self.assertEqual(birth["label"], "Geburtsdatum")
         self.assertTrue(birth["default_selected"])
-        self.assertEqual(letter["label"], "Datum")
-        self.assertFalse(letter["default_selected"])
+        self.assertEqual([r for r in results if "17.10.2026" in r["text"]], [])
 
     def test_birth_place_after_date(self):
         results = detect("geboren am 3. Mai 1979 in Bad Musterberg")

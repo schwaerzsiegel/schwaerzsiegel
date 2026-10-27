@@ -33,8 +33,11 @@ DEFAULT_OFF_LABELS = {"Organisation", "Datum", "Betrag", "Firmenanschrift", "Ser
 
 _UPPER = "A-ZÄÖÜ"
 _LOWER = "a-zäöüß"
-NAME_WORD = rf"[{_UPPER}][{_LOWER}]+(?:-[{_UPPER}][{_LOWER}]+)?"
-NAME = rf"{NAME_WORD}(?: (?:von |van |de |zu |vom |von der )?{NAME_WORD}){{0,3}}"
+# Phase 17: ein Namenswort endet am Wortende (sonst wurde aus „Org.-Z.“ der Name „Or“)
+NAME_WORD = rf"[{_UPPER}][{_LOWER}]+(?![{_LOWER}])(?:-[{_UPPER}][{_LOWER}]+(?![{_LOWER}]))?"
+# Phase 17: Ein Name endet nicht mitten in einem Wort wie „Org.-Z.“ (sonst überdeckte „Absender: Amt
+# Muster Org.-Z.“ das Organisationszeichen); Satzzeichen danach („Becker.“, „Becker,“) bleiben erlaubt.
+NAME = rf"{NAME_WORD}(?: (?:von |van |de |zu |vom |von der )?{NAME_WORD}){{0,3}}(?!\.[\w\-])"
 MONTHS = "Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember"
 DATE = rf"\d{{1,2}}\. ?\d{{1,2}}\. ?(?:19|20)?\d{{2}}(?!\d)|\d{{1,2}}\. ?(?:{MONTHS}) (?:19|20)\d{{2}}"
 CITY = rf"[{_UPPER}][{_LOWER}]+(?:(?: | ?- ?)(?:am |an der |im |bei |ob der |in der )?[{_UPPER}][{_LOWER}]+)*"
@@ -119,6 +122,9 @@ CONTEXT_RULES = [
     ContextRule("Geburtsdatum", r"Geburtsdatum|Geb\.? ?-? ?Datum|geb\.|geboren(?: am)?|Geburtstag", DATE,
                 filler=False),
     ContextRule("Geburtsort", r"Geburtsort|Geb\.? ?-? ?Ort|geboren in", CITY, confidence=0.9, filler=False),
+    # Phase 17: Sterbedatum (Datum nach dem Hinweis; „ist am … verstorben“ siehe _DATE_BEFORE_HINT)
+    ContextRule("Sterbedatum", r"Sterbedatum|Todesdatum|Todestag|Sterbetag|verstorben(?: am)?|gestorben(?: am)?|†",
+                DATE, filler=False),
     ContextRule("Steuer-ID",
                 r"Steuer-?ID(?:-?Nr\.?)?|Steuer-?IdNr\.?|IdNr\.?|(?:Steuerliche )?Identifikationsnummer"
                 r"|Steuer-?identifikationsnummer|TIN",
@@ -149,6 +155,10 @@ CONTEXT_RULES = [
                 NAME, colon=True, filler=False),
     ContextRule("Person", r"Herrn?|Frau|Hr\.|Fr\.", rf"(?:(?:Dr\.|Prof\.) )*{NAME}", confidence=0.9, filler=False),
     ContextRule("Person", r"geb\.|geborene[rn]?", NAME, confidence=0.85, filler=False),  # Geburtsname
+    # Phase 17: Praxis/Kanzlei mit vollem Personennamen ("Praxis Dr. Erika Mustermann") - ohne KI-Modell
+    ContextRule("Person", r"Praxis|Kanzlei|Büro|Steuerbüro|Ingenieurbüro|Architekturbüro",
+                rf"(?:(?:Dr\.|Prof\.)(?: (?:med|jur|rer\. nat|dent)\.)? )*{NAME_WORD} {NAME_WORD}",
+                confidence=0.85, filler=False),
     ContextRule("Adresse",
                 r"Anschrift|Adresse|Wohnanschrift|Postanschrift|Wohnort|wohnhaft(?: in)?|Lieferadresse"
                 r"|Rechnungsadresse|Straße|PLZ ?/ ?Ort",
@@ -192,6 +202,35 @@ def _compile(rule: ContextRule) -> list[re.Pattern]:
 _COMPILED = [(rule, _compile(rule)) for rule in CONTEXT_RULES]
 # "geboren am 3. Mai 1979 in Kiel" - der Ort steht hinter dem Datum
 _BIRTHPLACE_AFTER_DATE = re.compile(rf"(?i:geb(?:oren|\.)?)(?: am)?:? ?(?:{DATE}) in (?P<value>{CITY})")
+# Phase 17: Hinweis hinter dem Datum: "ist am 02.02.2024 verstorben", "wurde am 12.05.1980 in Kiel geboren"
+_DATE_BEFORE_HINT = [
+    (label, re.compile(rf"(?P<value>{DATE})(?: (?:in|im|zu) {CITY})?(?: [a-zäöüß]+){{0,2}} (?i:{hint})(?![{_LOWER}])"))
+    for label, hint in (("Sterbedatum", r"verstorben|gestorben|verschieden"), ("Geburtsdatum", r"geboren"))
+]
+
+# Phase 17: Betriebsinterne Organisationszeichen ("Org.-Z. 131.01a"). Bezeichnung und Kennung bilden
+# einen Treffer; zwischen beiden höchstens Leerzeichen, ein Doppelpunkt und ein Zeilenumbruch. Die
+# Kennung wird vollständig geprüft: danach kein Buchstabe, keine Ziffer und kein ".Ziffer" ("131.01d",
+# "12.05.2025" sind ungültig und werden nicht teilweise erkannt). Ohne Bezeichnung nie.
+ORG_ZEICHEN_LABEL = r"Organisationskennzeichen|Org\. ?-? ?Zeichen|Org\. ?-? ?Z\."
+_ORG_ZEICHEN = re.compile(
+    rf"(?<![\w\-])(?P<label>(?i:{ORG_ZEICHEN_LABEL}))(?![{_LOWER}])"
+    r"[ \t]*:?[ \t]*\n?[ \t]*:?[ \t]*"
+    r"(?P<value>\d+(?:\.\d+)?[abc]?)(?![\w]|\.\d)")
+
+
+# Phase 17: Einzelunternehmen mit vollem Namen ("Jonas Becker e.K.") - der Name ist eine Person
+_SOLE_TRADER = re.compile(rf"(?<![\w])(?P<value>{NAME_WORD} {NAME_WORD}),? (?:e\. ?K\.|e\. ?Kfm\.|e\. ?Kfr\.)(?![\w])")
+
+
+def sole_trader_hits(text: str) -> list["Hit"]:
+    return [Hit("Person", m.start("value"), m.end("value"), 0.85, PRIO_CONTEXT, "Einzelunternehmen mit Personenname")
+            for m in _SOLE_TRADER.finditer(text)]
+
+
+def org_zeichen_hits(text: str) -> list["Hit"]:
+    return [Hit("Organisationszeichen", m.start("label"), m.end("value"), 0.95, PRIO_CONTEXT,
+                f"Kontext „{m.group('label')}“") for m in _ORG_ZEICHEN.finditer(text)]
 
 
 @dataclass
@@ -234,7 +273,11 @@ def context_hits(text: str) -> list[Hit]:
                 hits.append(Hit(rule.label, start, start + len(value), confidence, PRIO_CONTEXT, reason))
     for m in _BIRTHPLACE_AFTER_DATE.finditer(text):
         hits.append(Hit("Geburtsort", m.start("value"), m.end("value"), 0.9, PRIO_CONTEXT, "Kontext „geboren … in“"))
-    return hits
+    for label, pattern in _DATE_BEFORE_HINT:
+        for m in pattern.finditer(text):
+            hits.append(Hit(label, m.start("value"), m.end("value"), 0.9, PRIO_CONTEXT,
+                            f"Kontext „… {m.group().rsplit(' ', 1)[-1]}“"))
+    return hits + org_zeichen_hits(text) + sole_trader_hits(text)
 
 
 def _trim_iban(value: str) -> str:

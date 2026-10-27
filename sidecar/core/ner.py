@@ -28,7 +28,7 @@ from core.paths import GLINER_MODEL_ID, HF_CACHE_DIR
 from core import spm_paths  # noqa: E402,F401  Phase 7: Umlaute im Modellpfad (vor gliner)
 from gliner import GLiNER  # noqa: E402
 
-from core import rules, validators  # noqa: E402
+from core import rules, validators, vorschlagsregeln  # noqa: E402
 
 _GERMAN_LABELS = [
     "Person", "Adresse", "IBAN", "Sozialversicherungsnummer",
@@ -173,8 +173,10 @@ def _trim_field_words(words: list[dict]) -> list[dict]:
     return words
 
 
-def _suggestion(label, start, end, confidence, priority, reason, source, index) -> dict | None:
-    words = _trim_field_words(_words_in_span(index, start, end))
+def _suggestion(label, start, end, confidence, priority, reason, source, index, trim: bool = True) -> dict | None:
+    words = _words_in_span(index, start, end)
+    if trim:
+        words = _trim_field_words(words)
     if not words:
         return None
     return {
@@ -195,7 +197,9 @@ def _suggestion(label, start, end, confidence, priority, reason, source, index) 
 def _rule_pass(text, index) -> list[dict]:
     out = []
     for hit in rules.all_hits(text):
-        s = _suggestion(hit.label, hit.start, hit.end, hit.confidence, hit.priority, hit.reason, "regex", index)
+        # Phase 17: beim Organisationszeichen gehört die Bezeichnung („Org.Z.:“) zum Treffer
+        s = _suggestion(hit.label, hit.start, hit.end, hit.confidence, hit.priority, hit.reason, "regex", index,
+                        trim=hit.label != "Organisationszeichen")
         if s:
             out.append(s)
     return out
@@ -346,6 +350,8 @@ def detect(words: list[dict], timer=None, llm_cache: dict | None = None, on_step
             suggestions.extend(_gliner_pass(text, index))
 
     suggestions = resolve_conflicts(suggestions)
+    # Phase 17: allgemeine Datumsangaben früh entfernen (core/vorschlagsregeln.py)
+    suggestions = vorschlagsregeln.vor_der_ki(text, suggestions)
 
     # Unsichere Fälle (mittlere Sicherheit) an das lokale LLM zur Kontext-
     # Prüfung übergeben - läuft ausschließlich lokal (llama-cpp-python,
@@ -358,6 +364,9 @@ def detect(words: list[dict], timer=None, llm_cache: dict | None = None, on_step
         with step("LLM"):
             llm.disambiguate(text, ambiguous, cache=llm_cache, timer=timer, on_progress=llm_progress,
                              should_cancel=should_cancel)
+
+    # Phase 17: Organisationen ohne Personenbezug u. a. nicht vorschlagen (core/vorschlagsregeln.py)
+    suggestions = vorschlagsregeln.nach_der_ki(suggestions)
 
     # Interne Felder nicht ans Frontend ausliefern.
     for s in suggestions:

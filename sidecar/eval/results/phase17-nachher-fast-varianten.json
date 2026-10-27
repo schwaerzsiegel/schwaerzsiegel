@@ -1,0 +1,157 @@
+{
+ "mode": "fast",
+ "seed": 2026,
+ "corpus": "varianten",
+ "documents": 60,
+ "seconds": 47.3,
+ "micro": {
+  "tp": 360,
+  "fn": 0,
+  "fp": 1,
+  "precision": 0.997229916897507,
+  "recall": 1.0,
+  "f1": 0.9986130374479889
+ },
+ "coverage": 1.0,
+ "selection": {
+  "tp": 360,
+  "fn": 0,
+  "fp": 1,
+  "precision": 0.997229916897507,
+  "recall": 1.0,
+  "f1": 0.9986130374479889
+ },
+ "selection_false": [
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Praxis Dr. Muster,",
+   "label": "Person",
+   "llm": null
+  }
+ ],
+ "per_category": {
+  "person": {
+   "tp": 80,
+   "fn": 0,
+   "fp": 1,
+   "precision": 0.9876543209876543,
+   "recall": 1.0,
+   "f1": 0.9937888198757764
+  },
+  "adresse": {
+   "tp": 60,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "telefon": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "email": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsdatum": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsort": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "personalnummer": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "sv_nummer": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "steuer_id": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "kv_nummer": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "gesundheit": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {},
+ "missed": [],
+ "false_alarms": [
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Praxis Dr. Muster,",
+   "label": "Person",
+   "confidence": 0.44
+  }
+ ]
+}
