@@ -67,7 +67,8 @@ _MODEL_VALIDATORS = {
     # markierte GLiNER bei Fließtext Wörter wie "Antrag" (gemessen: 11 pro Seite)
     "Aktenzeichen": lambda s: any(c.isdigit() for c in s),
     "KFZ-Kennzeichen": lambda s: any(c.isdigit() for c in s),
-    "Person": lambda s: not any(c.isdigit() for c in s) and "@" not in s,
+    # Phase 17b: Rollen, Anreden und Pronomen ("Beschäftigter", "Herrn", "er") sind keine Namen
+    "Person": lambda s: not any(c.isdigit() for c in s) and "@" not in s and rules.plausible_person(s),
     "Adresse": rules.plausible_address,
     "Geburtsort": lambda s: not any(c.isdigit() for c in s),
 }

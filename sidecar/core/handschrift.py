@@ -21,7 +21,8 @@ import fitz
 import numpy as np
 
 ZOOM = 1.5                 # ca. 108 dpi – reicht für Striche, bleibt schnell
-INK = 150                  # Grauwert darunter gilt als Tinte (auch blaue/rote Tinte)
+INK_MAX = 200              # Grauwert darunter gilt als Tinte – auch dünne, helle Kugelschreiberstriche
+INK_BELOW_PAPER = 50       # … und mindestens so viel dunkler als das Papier (graue Scans)
 CELL = 6                   # Rastergröße in Bildpunkten
 CELL_MIN_INK = 4           # so viele Tintenpunkte machen eine Zelle „beschrieben“
 JOIN = 3                   # Zellen Abstand, über den Striche zu einem Bereich verbunden werden
@@ -29,7 +30,10 @@ MIN_W, MIN_H = 24.0, 9.0   # kleinster Bereich in PDF-Punkten
 MIN_CELLS = 8              # so viele beschriebene Zellen braucht ein Bereich (Staub bleibt darunter)
 MAX_PAGE_SHARE = 0.25      # größer = eher Bild oder Rand als Unterschrift
 WORD_PAD = 1.5             # Rand um erkannte Wörter, der nicht als Tinte zählt
-LINE_RUN = 60              # gerade Strecke (Bildpunkte, ca. 40 pt) = gedruckte Linie, keine Handschrift
+LINE_RUN = 60              # waagerechte gerade Strecke (Bildpunkte, ca. 40 pt) = gedruckte Linie
+VLINE_RUN = 30             # senkrechte gerade Strecke (ca. 20 pt) = Rand eines Kastens
+LINE_GAP = 3               # so große Lücken in einer gescannten Linie werden überbrückt
+PAD = 2.0                  # Rand um einen Fund in PDF-Punkten
 
 CONF_SIGNATURE = 0.7
 CONF_OTHER = 0.6
@@ -37,11 +41,14 @@ CONF_OTHER = 0.6
 _GRUSS = re.compile(r"(?i)grü(ß|ss)e|gruss|gruß|hochachtungsvoll|^i\.?\s?a\.?$|^i\.?\s?v\.?$|^gez\.?$|"
                     r"unterschrift|^ppa\.?$")
 
+_PUNCT = set("()[]{},.;:!?\"'„“”‚‘’«»-–")
+
 
 def _is_real_word(w: dict) -> bool:
     """Wörter, die die Texterkennung sicher gelesen hat. Kritzeleien liest sie oft als Zeichensalat
     mit niedriger Sicherheit – die zählen hier als Tinte, nicht als Text."""
-    text = w.get("text", "").strip()
+    # Satzzeichen wie Klammern und Komma zählen nicht mit („(TV-L),“ ist ein echtes Wort)
+    text = "".join(ch for ch in w.get("text", "") if ch not in _PUNCT and not ch.isspace())
     if not text:
         return False
     alnum = sum(ch.isalnum() for ch in text)
@@ -51,24 +58,48 @@ def _is_real_word(w: dict) -> bool:
     return conf is None or conf >= 50
 
 
+def _ink(img: np.ndarray) -> np.ndarray:
+    """Tinte: deutlich dunkler als das Papier. Die Grenze richtet sich nach dem Papier (Median der Seite),
+    damit helle Unterschriften auf weißem Papier zählen und grau gescanntes Papier nicht."""
+    return img < min(INK_MAX, int(np.median(img)) - INK_BELOW_PAPER)
+
+
 def _long_runs(mask: np.ndarray, min_len: int) -> np.ndarray:
-    """Bildpunkte, die zu waagerechten Strecken von mindestens min_len gehören (Zeile für Zeile)."""
+    """Bildpunkte, die zu waagerechten Strecken von mindestens min_len gehören (Zeile für Zeile).
+    Gescannte Linien sind leicht schief und haben kleine Lücken: Die Nachbarzeilen zählen mit, Lücken
+    bis LINE_GAP werden überbrückt."""
+    band = mask.copy()
+    band[1:] |= mask[:-1]
+    band[:-1] |= mask[1:]
     out = np.zeros_like(mask)
-    for y in np.nonzero(mask.any(axis=1))[0]:
-        row = np.concatenate(([0], mask[y].astype(np.int8), [0]))
+    for y in np.nonzero(band.any(axis=1))[0]:
+        row = np.concatenate(([0], band[y].astype(np.int8), [0]))
         d = np.diff(row)
         starts, ends = np.nonzero(d == 1)[0], np.nonzero(d == -1)[0]
-        for a, b in zip(starts, ends):
-            if b - a >= min_len:
-                out[y, a:b] = True
-    return out
+        a0 = b0 = None
+        for a, b in list(zip(starts, ends)) + [(None, None)]:
+            if a is not None and b0 is not None and a - b0 <= LINE_GAP:
+                b0 = b
+                continue
+            if b0 is not None and b0 - a0 >= min_len:
+                out[y, a0:b0] = True
+            a0, b0 = a, b
+    return out & mask
 
 
-def _remove_straight_lines(ink: np.ndarray) -> np.ndarray:
-    """Gedruckte Linien (Unterstriche, Tabellen, Rahmen) entfernen; Handschrift hat kaum lange gerade
-    Strecken. Ein Strich, der nur teilweise gerade ist, bleibt mit seinen übrigen Teilen erhalten."""
-    lines = _long_runs(ink, LINE_RUN) | _long_runs(ink.T, LINE_RUN).T
-    return ink & ~lines
+def _straight_lines(ink: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Gedruckte Linien (Unterstriche, Tabellen, Rahmen und deren Ränder): waagerechte und senkrechte.
+    Handschrift hat kaum lange gerade Strecken; ein Strich, der nur teilweise gerade ist, bleibt nach dem
+    Entfernen mit seinen übrigen Teilen erhalten."""
+    return _long_runs(ink, LINE_RUN), _long_runs(ink.T, VLINE_RUN).T
+
+
+def _on_line(r: fitz.Rect, hlines: np.ndarray) -> bool:
+    """Steht der Bereich auf einer gedruckten Linie (Unterschriftslinie)? r in angezeigten PDF-Punkten."""
+    x0, x1 = int(r.x0 * ZOOM), int(r.x1 * ZOOM)
+    y0, y1 = max(0, int((r.y1 - 3) * ZOOM)), int((r.y1 + 6) * ZOOM)
+    band = hlines[y0:y1, x0:x1]
+    return band.size > 0 and band.sum(axis=1).max() >= 0.5 * (x1 - x0)
 
 
 def _components(grid: np.ndarray) -> list[list[tuple[int, int]]]:
@@ -100,7 +131,7 @@ def detect(pdf_page: "fitz.Page", words: list[dict]) -> list[dict]:
     """Vorschläge für Handschrift auf einer Scan-Seite (Wörter aus der Texterkennung)."""
     pix = pdf_page.get_pixmap(matrix=fitz.Matrix(ZOOM, ZOOM), colorspace=fitz.csGRAY, alpha=False)
     img = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.stride)[:, :pix.width]
-    ink = img < INK
+    ink = _ink(img)
 
     # Erkannte Wörter ausblenden (Koordinaten: Wörter ungedreht, Bild gedreht wie angezeigt)
     rot = pdf_page.rotation_matrix
@@ -115,7 +146,8 @@ def detect(pdf_page: "fitz.Page", words: list[dict]) -> list[dict]:
         y1 = min(pix.height, int((shown.y1 + WORD_PAD) * ZOOM) + 1)
         ink[y0:y1, x0:x1] = False
 
-    ink = _remove_straight_lines(ink)
+    hlines, vlines = _straight_lines(ink)
+    ink &= ~(hlines | vlines)
     gh, gw = pix.height // CELL, pix.width // CELL
     if not gh or not gw:
         return []
@@ -134,25 +166,27 @@ def detect(pdf_page: "fitz.Page", words: list[dict]) -> list[dict]:
             continue                                   # Rand, Schatten, großes Bild
         if r.height < 14 and r.width > 6 * r.height and len(comp) < r.width * ZOOM / CELL * 1.6:
             continue                                   # dünne Linie (Unterstrich, Tabellenrand)
-        found.append(r)
+        found.append((r, _on_line(r, hlines)))
 
     suggestions = []
-    for r in found:
+    for r, on_line in found:
+        r = r + (-PAD, -PAD, PAD, PAD)                 # Striche am Rand der Zellen sicher abdecken
         # Vergleich in Seitenkoordinaten wie die Wörter (bei gedrehten Seiten liegt „unter“ sonst seitlich).
         # Unterschriften stehen unter der Grußformel und beginnen etwa auf ihrer Höhe (nicht weit rechts).
         bbox = (r * pdf_page.derotation_matrix).normalize()
         gruss = any(_GRUSS.search(w["text"]) and 0 <= bbox.y0 - w["bbox"][3] <= 140
                     and bbox.x0 < w["bbox"][2] + 150 and bbox.x1 > w["bbox"][0] - 40 for _, w in text_lines)
-        label = "Unterschrift" if gruss else "Handschrift oder Stempel"
+        signature = gruss or on_line
         suggestions.append({
             "id": str(uuid4()),
-            "label": label,
+            "label": "Unterschrift" if signature else "Handschrift oder Stempel",
             "text": "",
             "reason": ("Handschrift unter einer Grußformel – bitte prüfen" if gruss else
+                       "Handschrift auf einer Unterschriftslinie – bitte prüfen" if on_line else
                        "Striche ohne erkannten Text (z. B. Handschrift, Stempel, Logo oder Linie) – bitte prüfen"),
             "bbox": [bbox.x0, bbox.y0, bbox.x1, bbox.y1],
             "word_ids": [],
-            "confidence": CONF_SIGNATURE if gruss else CONF_OTHER,
+            "confidence": CONF_SIGNATURE if signature else CONF_OTHER,
             "source": "handschrift_heuristik",
             "default_selected": True,
             "also_detected_as": [],

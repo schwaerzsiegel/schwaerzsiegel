@@ -344,6 +344,37 @@ def plausible_address(value: str) -> bool:
     return bool(_ADDRESS_SHAPE.search(value))
 
 
+# Phase 17b: Wörter, die eine Rolle oder Anrede bezeichnen, aber keinen Namen ("der Beschäftigte",
+# "Herrn", "er"). Das KI-Modell schlägt sie oft als Person vor.
+_ROLE_WORD = re.compile(
+    r"(?i)(?:beschäftigt|arbeitnehm|arbeitgeb|mitarbeit|angestellt|antragstell|bewerb|kläg|beklagt|"
+    r"mieter|vermieter|pächter|verpächter|käuf|verkäuf|auftraggeb|auftragnehm|vertragspartn|versichert|"
+    r"beteiligt|betroffen|unterzeichn|bevollmächtigt|vertret|sachbearbeit|vorgesetzt|leit|inhab|kund|"
+    r"patient|schül|student|bürg|einwohn|absend|empfäng|zeug|erb|verstorben|ehemann|ehefrau|ehegatt|"
+    r"lebenspartn|kind|sohn|tochter|vater|mutter|eltern|herr|herrn|frau|dame|damen|herren|person|"
+    r"teilnehm|nutz|benutz|anwend|verantwortlich|dienstherr|kolleg|nachbar|chef)"
+    r"(?:e|er|en|em|es|in|innen|n|r|s|nde|nden|nder|erin|erinnen|ern)?\Z")
+_NOT_A_NAME = {
+    "er", "sie", "es", "ihm", "ihn", "ihr", "ihre", "ihren", "ihnen", "sein", "seine", "seinen", "seiner",
+    "dessen", "deren", "der", "die", "das", "dem", "den", "des", "ein", "eine", "einer", "einem", "einen",
+    "und", "oder", "sowie", "mit", "von", "vom", "zu", "zum", "zur", "für", "dr", "prof", "med", "jur",
+    "hr", "fr", "sehr", "geehrte", "geehrter", "liebe", "lieber", "ich", "wir", "uns", "mich", "mir",
+}
+
+
+def plausible_person(value: str) -> bool:
+    """KI-Treffer "Person": mindestens ein Wort muss ein Name sein können – großgeschrieben und weder
+    Rolle ("Beschäftigter"), Anrede ("Herrn") noch Pronomen ("er")."""
+    for word in value.split():
+        w = word.strip(".:,;()[]{}\"'„“”‚‘’-")
+        if len(w) < 2 or not w[0].isupper():
+            continue
+        if w.casefold() in _NOT_A_NAME or _ROLE_WORD.match(w):
+            continue
+        return True
+    return False
+
+
 def plausible_phone(text: str, start: int, end: int) -> bool:
     """Darf eine Zahlenfolge ohne eindeutigen Kontext Telefonnummer heißen?
     Ja, wenn die Zeile davor auf ein Telefon hinweist; sonst nur bei klarer
