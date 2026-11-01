@@ -137,7 +137,7 @@ export interface PersonGroup {
 
 const TITLE_WORDS = /^(Dr\.|Prof\.)$/;
 
-/** Anzeigename: die ausführlichste Schreibweise (mit Titel, ohne Anrede), z. B. „Dr. Jana Petersen“. */
+/** Anzeigename: die ausführlichste Schreibweise (mit Titel, ohne Anrede), z. B. „Dr. Jana Beispiel“. */
 function displayName(texts: string[]): string {
   let best = "";
   let bestCount = -1;
@@ -156,31 +156,49 @@ function displayName(texts: string[]): string {
   return best;
 }
 
-/** Personen-Treffer nach Person gruppiert, Personen mit den meisten Stellen zuerst. */
+/** Personen-Treffer nach Person gruppiert, Personen mit den meisten Stellen zuerst.
+ *  Phase 21: Gibt es zu einem Nachnamen mehrere Vornamen („Wiebke Hansen“, „Jan Hansen“), bekommt jede
+ *  Person eine eigene Zeile; Stellen nur mit Nachnamen („Frau Hansen“) stehen dann in einer eigenen Zeile
+ *  „Hansen (Vorname nicht genannt)“, weil sie keiner der Personen sicher zuzuordnen sind. */
 export function personGroups(marks: Mark[]): PersonGroup[] {
   const persons = marks.filter((m) => m.label === "Person" && m.text);
   const keys = new Set<string>();
-  const firstNames = new Map<string, Set<string>>();
+  const firstNames = new Map<string, Set<string>>(); // Vorname -> Nachnamen
+  const givenNames = new Map<string, Set<string>>(); // Nachname -> Vornamen
   for (const m of persons) {
     const words = nameWords(m.text);
     const key = surname(m.text);
     if (!key || words.length < 2) continue;
     keys.add(key);
-    for (const w of words) if (w !== key) firstNames.set(w, (firstNames.get(w) ?? new Set()).add(key));
+    const given = words.filter((w) => w !== key);
+    for (const w of given) firstNames.set(w, (firstNames.get(w) ?? new Set()).add(key));
+    if (given.length) givenNames.set(key, (givenNames.get(key) ?? new Set()).add(given[0]));
   }
+  const shared = (key: string) => (givenNames.get(key)?.size ?? 0) > 1;
   const groups = new Map<string, Mark[]>();
+  const unnamed = new Set<string>();
   for (const m of persons) {
     const words = nameWords(m.text);
     let key = surname(m.text);
     if (!key) continue;
-    if (words.length === 1 && !keys.has(key) && firstNames.get(key)?.size === 1) key = [...firstNames.get(key)!][0];
+    let given = words.filter((w) => w !== key)[0];
+    if (words.length === 1 && !keys.has(key) && firstNames.get(key)?.size === 1) {
+      given = key; // nur der Vorname („Wiebke“)
+      key = [...firstNames.get(key)!][0];
+    }
+    if (shared(key)) {
+      if (given && givenNames.get(key)!.has(given)) key = `${key}|${given}`;
+      else unnamed.add((key = `${key}|`));
+    }
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key)!.push(m);
   }
   return [...groups.entries()]
     .map(([key, ms]) => ({
       key,
-      name: displayName(ms.map((m) => m.text)) || key,
+      name: unnamed.has(key)
+        ? `${key.slice(0, -1)} (Vorname nicht genannt)`
+        : displayName(ms.map((m) => m.text)) || key,
       marks: ms,
       open: ms.filter((m) => m.status === "suggested").length,
       confirmed: ms.filter((m) => m.status === "confirmed" || m.status === "redacted").length,

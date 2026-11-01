@@ -18,6 +18,7 @@ Menge von Wort-IDs beschrieben, deren bbox vereinigt wird - robuster als
 eine Zeichen-Offset-zu-Koordinate-Umrechnung.
 """
 
+import re
 import threading
 from contextlib import nullcontext
 from uuid import uuid4
@@ -195,8 +196,55 @@ def _suggestion(label, start, end, confidence, priority, reason, source, index, 
     }
 
 
-def _rule_pass(text, index) -> list[dict]:
+# Phase 21: Tabellenspalte „Geb.-Datum“ – ein Datum in einer Zelle unter dieser Überschrift ist ein
+# Geburtsdatum (bisher nur „Datum, zu prüfen“). Überschrift auch umbrochen („Geb.-Datu“ / „m“).
+_COLUMN_HEADERS = [
+    ("Geburtsdatum", re.compile(r"(?i)geburtsdatum|geb\.? ?-? ?datu?m?|geburtstag|geboren am")),
+    ("Sterbedatum", re.compile(r"(?i)sterbedatum|todesdatum|sterbetag|todestag")),
+]
+_DATE_CELL = re.compile(rf"\(?(?:{rules.DATE})\)?[.,;]?")
+_CELL_GAP = 8.0  # Abstand zum Nachbarwort in derselben Zeile: in Tabellen groß, im Fließtext ~3 pt
+
+
+def _on_same_line(a: dict, b: dict) -> bool:
+    ay = (a["bbox"][1] + a["bbox"][3]) / 2
+    return b["bbox"][1] <= ay <= b["bbox"][3]
+
+
+def _is_cell(word: dict, words: list[dict]) -> bool:
+    """Steht das Wort allein in seiner Zelle (kein Fließtext daneben)?"""
+    x0, _, x1, _ = word["bbox"]
+    for other in words:
+        if other is word or not _on_same_line(word, other):
+            continue
+        if other["bbox"][0] < x1 + _CELL_GAP and other["bbox"][2] > x0 - _CELL_GAP:
+            return False
+    return True
+
+
+def _column_hits(index) -> list[dict]:
+    words = [w for _, _, w in index]
+    headers = [(label, w) for w in words for label, pattern in _COLUMN_HEADERS
+               if pattern.fullmatch(w["text"].strip(":")) and _is_cell(w, words)]
     out = []
+    if not headers:
+        return out
+    for start, end, w in index:
+        if not _DATE_CELL.fullmatch(w["text"]) or not _is_cell(w, words):
+            continue
+        x0, y0, x1, _ = w["bbox"]
+        for label, h in headers:
+            hx0, _, hx1, hy1 = h["bbox"]
+            overlap = min(x1, hx1) - max(x0, hx0)
+            if y0 >= hy1 and overlap >= 0.5 * min(x1 - x0, hx1 - hx0):
+                out.append(_suggestion(label, start, end, 0.85, rules.PRIO_CONTEXT,
+                                       f"Tabellenspalte „{h['text']}“", "regex", index))
+                break
+    return [s for s in out if s]
+
+
+def _rule_pass(text, index) -> list[dict]:
+    out = _column_hits(index)
     for hit in rules.all_hits(text):
         # Phase 17: beim Organisationszeichen gehört die Bezeichnung („Org.Z.:“) zum Treffer
         s = _suggestion(hit.label, hit.start, hit.end, hit.confidence, hit.priority, hit.reason, "regex", index,

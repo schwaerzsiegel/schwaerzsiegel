@@ -1,0 +1,324 @@
+{
+ "mode": "rules",
+ "seed": 2026,
+ "corpus": "varianten",
+ "documents": 60,
+ "seconds": 1.2,
+ "micro": {
+  "tp": 330,
+  "fn": 30,
+  "fp": 0,
+  "precision": 1.0,
+  "recall": 0.9166666666666666,
+  "f1": 0.9565217391304348
+ },
+ "coverage": 0.9197860962566845,
+ "selection": {
+  "tp": 330,
+  "fn": 30,
+  "fp": 0,
+  "precision": 1.0,
+  "recall": 0.9166666666666666,
+  "f1": 0.9565217391304348
+ },
+ "selection_false": [],
+ "per_category": {
+  "person": {
+   "tp": 50,
+   "fn": 30,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 0.625,
+   "f1": 0.7692307692307693
+  },
+  "adresse": {
+   "tp": 60,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "telefon": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "email": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsdatum": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "geburtsort": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "personalnummer": {
+   "tp": 30,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "iban": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "bankverbindung": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "precision": null,
+   "recall": null,
+   "f1": 0.0
+  },
+  "ausweis": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "sv_nummer": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "steuer_id": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "kv_nummer": {
+   "tp": 10,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "gesundheit": {
+   "tp": 20,
+   "fn": 0,
+   "fp": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  }
+ },
+ "other_false_alarms": {},
+ "confusion": {},
+ "missed": [
+  {
+   "doc": "v_krankmeldung-01",
+   "text": "Noah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-02",
+   "text": "Elias",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-03",
+   "text": "Lukas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-04",
+   "text": "Leonie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-05",
+   "text": "Mia",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-06",
+   "text": "Hannah",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-07",
+   "text": "Felix",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-08",
+   "text": "Paul",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-09",
+   "text": "Lena",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_krankmeldung-10",
+   "text": "Elias",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-01",
+   "text": "Marie Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-02",
+   "text": "Max Krüger",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-03",
+   "text": "Leonie Lorenz",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-04",
+   "text": "Jonas Wagner",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-05",
+   "text": "Hannah Nowak",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-06",
+   "text": "Paul Haas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-07",
+   "text": "Noah Musterfrau",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-08",
+   "text": "Lukas Albrecht",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-09",
+   "text": "Marie Franke",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_vertrag-10",
+   "text": "Chiara Kowalski",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-01",
+   "text": "Jonas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-02",
+   "text": "Leonie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-03",
+   "text": "Sophie",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-04",
+   "text": "Elias",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-05",
+   "text": "Lukas",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-06",
+   "text": "Aylin",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-07",
+   "text": "Olga",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-08",
+   "text": "Mehmet",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-09",
+   "text": "Ben",
+   "expected": "person",
+   "got": null
+  },
+  {
+   "doc": "v_email-10",
+   "text": "Lukas",
+   "expected": "person",
+   "got": null
+  }
+ ],
+ "false_alarms": []
+}

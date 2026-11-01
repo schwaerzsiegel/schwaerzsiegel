@@ -52,7 +52,11 @@ _STREET_PREFIX = (rf"(?:Lütt|Lüttje|Groß|Große|Großer|Klein|Kleine|Kleiner|
                   rf"Langer|Kurze|Kurzer|Breite|Breiter|Obere|Untere|Achter de|Op de|Op'n|Bi de|An de|Sankt|St\.|"
                   rf"[{_UPPER}][{_LOWER}]+er) ")
 _STREET_WORD = r"(?:Straße|Strasse|Weg|Gasse|Allee|Platz|Ring|Damm|Ufer|Koppel|Kamp|Redder|Twiete|Stieg|Hörn|Deich|Wall|Markt|Busch|Winkel|Brook|Moor|Kai)"
-STREET = (rf"(?:(?:{_STREET_PREFIX})?[{_UPPER}][\w\-]*?(?:straße|strasse|[sS]tr\.|weg|gasse|allee|platz|ring|damm|ufer"
+# Phase 21: Wörter auf -platz, die keine Straße sind („Rangplatz 2 belegt …“)
+_NOT_A_STREET = (r"(?:Rang|Arbeits|Listen|Tabellen|Studien|Ausbildungs|Praktikums|Kita|Krippen|Kindergarten|Schul|"
+                 r"Park|Stell|Sitz|Start|Spitzen|Therapie|Pflege|Heim|Wohn|Ablage|Lager|Liege|Steh|Halte|"
+                 r"Camping|Sport|Spiel|Fest|Bau)(?:platz|plätze)\b")
+STREET = (rf"(?!{_NOT_A_STREET})(?:(?:{_STREET_PREFIX})?[{_UPPER}][\w\-]*?(?:straße|strasse|[sS]tr\.|weg|gasse|allee|platz|ring|damm|ufer"
           r"|chaussee|steig|pfad|koppel|kamp|redder|twiete|stieg|hörn|deich|wall|markt|busch|winkel|brook|moor|kai)"
           rf"|{_STREET_PREFIX}{_STREET_WORD}"
           rf"|(?:Am|An der|An den|Im|In der|Auf dem|Auf der|Zum|Zur|Unter den) [{_UPPER}][{_LOWER}]+)"
@@ -136,8 +140,9 @@ CONTEXT_RULES = [
                 r"(?: [a-zäöüß]+){0,3}",
                 PHONE_VALUE, v.phone, filler=False),
     ContextRule("E-Mail", r"E-?Mail(?:-?Adresse)?|Mail", EMAIL, v.email, 0.98, filler=False),
+    # Phase 21: Datum auch in der nächsten Zeile („Frau Dr. Beispiel (geb.“ / „14.03.1987)“)
     ContextRule("Geburtsdatum", r"Geburtsdatum|Geb\.? ?-? ?Datum|geb\.|geboren(?: am)?|Geburtstag", DATE,
-                filler=False),
+                filler=False, newline=True),
     ContextRule("Geburtsort", r"Geburtsort|Geb\.? ?-? ?Ort|geboren in", CITY, confidence=0.9, filler=False),
     # Phase 17: Sterbedatum (Datum nach dem Hinweis; „ist am … verstorben“ siehe _DATE_BEFORE_HINT)
     ContextRule("Sterbedatum", r"Sterbedatum|Todesdatum|Todestag|Sterbetag|verstorben(?: am)?|gestorben(?: am)?|†",
@@ -426,15 +431,20 @@ _NOT_A_NAME = {
 
 def plausible_person(value: str) -> bool:
     """KI-Treffer "Person": mindestens ein Wort muss ein Name sein können – großgeschrieben und weder
-    Rolle ("Beschäftigter"), Anrede ("Herrn") noch Pronomen ("er")."""
+    Rolle ("Beschäftigter"), Anrede ("Herrn") noch Pronomen ("er"). Wörter in Großbuchstaben zählen nur
+    zu zweit ("HANS MÜLLER"), allein sind sie meist ein Kürzel oder Produktname ("KOMPASS")."""
+    caps = 0
     for word in value.split():
         w = word.strip(".:,;()[]{}\"'„“”‚‘’-")
         if len(w) < 2 or not w[0].isupper():
             continue
         if w.casefold() in _NOT_A_NAME or _ROLE_WORD.match(w):
             continue
+        if w.isupper():
+            caps += 1  # Phase 21: ein Wort in Großbuchstaben allein ist meist ein Kürzel oder Produkt („KOMPASS“)
+            continue
         return True
-    return False
+    return caps >= 2
 
 
 def plausible_phone(text: str, start: int, end: int) -> bool:
