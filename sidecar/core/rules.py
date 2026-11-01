@@ -179,7 +179,10 @@ CONTEXT_RULES = [
                 r"|Rechnungsadresse|Straße|PLZ ?/ ?Ort",
                 # Phase 5: mit PLZ + Ort endet die Anschrift dort - sonst lief
                 # der Wert bis zum Zeilenende ("…, 12345 Ort. Bitte melden …")
-                rf"[^\n]*?\d{{5}} {CITY}|{REST_OF_LINE}", confidence=0.9, filler=False),
+                rf"[^\n]*?\d{{5}} {CITY}|{REST_OF_LINE}", confidence=0.9, filler=False,
+                # Phase 18b: eine Anschrift beginnt mit Großbuchstabe oder Ziffer – sonst Fließtext
+                # („Änderungen Ihrer Anschrift umgehend mit.“)
+                validator=lambda s: s[:1].isupper() or s[:1].isdigit()),
     ContextRule("Gesundheitsdaten",
                 r"Diagnosen?|Befunde?|Erkrankung(?:en)?|Krankheit(?:en)?|Vorerkrankung(?:en)?|Medikation|Medikamente?"
                 r"|Therapie|Behinderung|GdB|Allergien?|Beschwerden|Anamnese|ICD(?:-10)?"
@@ -230,7 +233,11 @@ def _year(date_text: str) -> int:
 _CV_BIRTH = re.compile(rf"(?m)^[ \t]*(?P<date>{DATE}) in (?P<place>{CITY})[ \t]*$")
 # Phase 17c: Straße ohne bekannte Endung, wenn direkt danach Postleitzahl und Ort folgen
 _STREET_BEFORE_PLZ = re.compile(
-    rf"(?m)(?<![\w\-])(?P<value>[{_UPPER}][\w\-]*\.?(?:[ \t][\w\-']+\.?){{0,3}}[ \t]\d{{1,4}}[ \t]?[a-zA-Z]?)"
+    # Phase 18b: weitere Wörter großgeschrieben oder ein kleines Bindewort („Achter de Möhl“) – sonst lief
+    # der Treffer in den Satz davor („Anschrift lautet Musterweg 3“)
+    rf"(?m)(?<![\w\-])(?P<value>[{_UPPER}][\w\-]*\.?"
+    rf"(?:[ \t](?:[{_UPPER}][\w\-']*\.?|de|op|to|bi|an|am|im|in|der|den|dem|vom|zum|zur|op'n)){{0,3}}"
+    rf"[ \t]\d{{1,4}}[ \t]?[a-zA-Z]?)"
     rf"(?![\w])(?:[ \t]*,[ \t]*|[ \t]*\n[ \t]*)(?={PLZ_CITY})")
 # Phase 17: Hinweis hinter dem Datum: "ist am 02.02.2024 verstorben", "wurde am 12.05.1980 in Kiel geboren"
 _DATE_BEFORE_HINT = [
