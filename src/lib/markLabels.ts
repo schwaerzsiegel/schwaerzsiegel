@@ -101,3 +101,96 @@ export function sameValueMarks(marks: Mark[], m: Mark): Mark[] {
   const key = m.text.trim().toLowerCase();
   return key ? marks.filter((x) => x.text.trim().toLowerCase() === key) : [m];
 }
+
+// Phase 20: Personen im ganzen Dokument – alle Stellen einer Person auf einmal schwärzen oder auslassen.
+// „Frau Hansen“, „Wiebke Hansen“, „Hansen,“ und „gez. Hansen“ gehören zu derselben Person.
+
+const NOT_A_NAME = new Set(["herr", "herrn", "frau", "hr", "fr", "dr", "prof", "med", "jur", "rer", "nat", "dipl", "ing", "gez", "ppa"]);
+const NAME_WORD = /^[A-ZÄÖÜ][a-zäöüß]+(?:-[A-ZÄÖÜ][a-zäöüß]+)*$/;
+
+/** Namenswörter eines Personen-Treffers ohne Anrede, Titel und Satzzeichen. */
+export function nameWords(text: string): string[] {
+  return text
+    .split(/\s+/)
+    .map((w) => w.replace(/^[^A-Za-zÄÖÜäöüß]+|[^A-Za-zÄÖÜäöüß]+$/g, ""))
+    .filter((w) => NAME_WORD.test(w) && !NOT_A_NAME.has(w.toLowerCase()));
+}
+
+/** Nachname: das letzte Namenswort – bei „Nachname, Vorname“ das erste. */
+function surname(text: string): string | null {
+  const words = nameWords(text);
+  if (!words.length) return null;
+  const core = text.trim().replace(/[,;.]+$/, "");
+  const comma = core.indexOf(",");
+  const commaFirst = words.length > 1 && comma > 0 && nameWords(core.slice(0, comma)).length > 0;
+  return commaFirst ? words[0] : words[words.length - 1];
+}
+
+export interface PersonGroup {
+  key: string;
+  name: string;
+  marks: Mark[];
+  open: number;
+  confirmed: number;
+  rejected: number;
+}
+
+const TITLE_WORDS = /^(Dr\.|Prof\.)$/;
+
+/** Anzeigename: die ausführlichste Schreibweise (mit Titel, ohne Anrede), z. B. „Dr. Jana Petersen“. */
+function displayName(texts: string[]): string {
+  let best = "";
+  let bestCount = -1;
+  for (const t of texts) {
+    const words = t
+      .split(/\s+/)
+      .map((w) => w.replace(/^[(„"]+/, ""))
+      .map((w) => (TITLE_WORDS.test(w.replace(/[,;:)]+$/, "")) ? w.replace(/[,;:)]+$/, "") : w.replace(/[.,;:)“"]+$/, "")));
+    const kept = words.filter((w) => TITLE_WORDS.test(w) || nameWords(w).length > 0);
+    const count = kept.filter((w) => !TITLE_WORDS.test(w)).length;
+    if (count > bestCount) {
+      best = kept.join(" ");
+      bestCount = count;
+    }
+  }
+  return best;
+}
+
+/** Personen-Treffer nach Person gruppiert, Personen mit den meisten Stellen zuerst. */
+export function personGroups(marks: Mark[]): PersonGroup[] {
+  const persons = marks.filter((m) => m.label === "Person" && m.text);
+  const keys = new Set<string>();
+  const firstNames = new Map<string, Set<string>>();
+  for (const m of persons) {
+    const words = nameWords(m.text);
+    const key = surname(m.text);
+    if (!key || words.length < 2) continue;
+    keys.add(key);
+    for (const w of words) if (w !== key) firstNames.set(w, (firstNames.get(w) ?? new Set()).add(key));
+  }
+  const groups = new Map<string, Mark[]>();
+  for (const m of persons) {
+    const words = nameWords(m.text);
+    let key = surname(m.text);
+    if (!key) continue;
+    if (words.length === 1 && !keys.has(key) && firstNames.get(key)?.size === 1) key = [...firstNames.get(key)!][0];
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(m);
+  }
+  return [...groups.entries()]
+    .map(([key, ms]) => ({
+      key,
+      name: displayName(ms.map((m) => m.text)) || key,
+      marks: ms,
+      open: ms.filter((m) => m.status === "suggested").length,
+      confirmed: ms.filter((m) => m.status === "confirmed" || m.status === "redacted").length,
+      rejected: ms.filter((m) => m.status === "rejected").length,
+    }))
+    .sort((a, b) => b.marks.length - a.marks.length || a.name.localeCompare(b.name, "de"));
+}
+
+/** Alle Stellen derselben Person (nur für Personen-Treffer, sonst nur die Markierung selbst). */
+export function samePersonMarks(marks: Mark[], m: Mark): PersonGroup | null {
+  if (m.label !== "Person") return null;
+  return personGroups(marks).find((g) => g.marks.some((x) => x.id === m.id)) ?? null;
+}

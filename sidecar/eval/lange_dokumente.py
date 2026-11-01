@@ -297,7 +297,7 @@ def _overlap(a: list[float], b: list[float]) -> bool:
 
 
 def messen(mode: str) -> dict:
-    from core import marks, ner
+    from core import marks, namensabgleich, ner
     from core import pdf_processor as pdf
 
     use_gliner, use_llm = mode in ("fast", "ai"), mode == "ai"
@@ -313,15 +313,23 @@ def messen(mode: str) -> dict:
         start = time.perf_counter()
         suggestions = []
         cache: dict = {}
+        pages = []
         with fitz.open(stream=data, filetype="pdf") as d:
             for i, p in enumerate(d):
                 page = pdf.extract_page(p, i, detect_images=True)
                 page.suggestions.extend(ner.detect(page.words, llm_cache=cache, use_llm=use_llm, use_gliner=use_gliner))
                 marks.init_auto(page)
-                for s in page.suggestions:
-                    suggestions.append({"page": i, "label": s["label"], "text": s.get("text", ""),
-                                        "bbox": s.get("bbox"), "selected": bool(s.get("default_selected")),
-                                        "confidence": round(s.get("confidence", 0), 2), "source": s.get("source")})
+                pages.append(page)
+        # Phase 19: wie in der App (main._namensabgleich) Namen im ganzen Dokument abgleichen
+        for page, extra in zip(pages, namensabgleich.ergaenzen([pg.words for pg in pages],
+                                                               [pg.suggestions for pg in pages])):
+            page.suggestions.extend(extra)
+            marks.init_auto(page)
+        for page in pages:
+            for s in page.suggestions:
+                suggestions.append({"page": page.index, "label": s["label"], "text": s.get("text", ""),
+                                    "bbox": s.get("bbox"), "selected": bool(s.get("default_selected")),
+                                    "confidence": round(s.get("confidence", 0), 2), "source": s.get("source")})
         sekunden = round(time.perf_counter() - start, 1)
 
         def treffer(seite: int, text: str):

@@ -49,7 +49,7 @@ from core import workdir  # noqa: E402
 workdir.start()
 atexit.register(workdir.cleanup_session)
 
-from core import audit, branding, marks, models, ner, pdf_processor, redaction  # noqa: E402
+from core import audit, branding, marks, models, namensabgleich, ner, pdf_processor, redaction  # noqa: E402
 from core.paths import DATA_DIR, FROZEN  # noqa: E402
 from core.timing import StepTimer, log, setup_logging
 
@@ -425,6 +425,8 @@ def _process_document(doc_id: str, content: bytes, mode: str = "fast"):
                     log.info(f"[Zeit] Seite {i + 1}/{page_count}: {timer.format()} | Summe {timer.total():.2f}s")
             finally:
                 doc.close()
+            if mode != "manual":
+                _namensabgleich(pages)
 
             with _DOCUMENTS_LOCK:
                 if doc_id not in DOCUMENTS:  # inzwischen geschlossen
@@ -502,6 +504,18 @@ def _same_box(a, b) -> bool:
     return max(abs(x - y) for x, y in zip(a, b)) < 2
 
 
+def _namensabgleich(pages) -> int:
+    """Phase 19: sicher erkannte Namen an allen weiteren Stellen des Dokuments vorschlagen."""
+    added = 0
+    for page, extra in zip(pages, namensabgleich.ergaenzen([p.words for p in pages],
+                                                           [p.suggestions for p in pages])):
+        if extra:
+            page.suggestions.extend(extra)
+            marks.init_auto(page)
+            added += len(extra)
+    return added
+
+
 def _reanalyze_document(doc_id: str, mode: str):
     from core.llm import Cancelled as LlmCancelled
 
@@ -544,6 +558,7 @@ def _reanalyze_document(doc_id: str, mode: str):
                 marks.init_auto(holder)
                 page.suggestions = kept + fresh
                 added += len(fresh)
+            added += _namensabgleich(document["pages"])
             document["analysis_mode"] = mode
             document["notices"].extend(notices)
             _invalidate_result(document)

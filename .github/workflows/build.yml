@@ -93,7 +93,7 @@ jobs:
         run: |
           # Werden nur beim Laden eines Modells importiert; fehlen sie, sind die KI-Modi gesperrt.
           $pyz = Get-Content sidecar\build\redaction-sidecar\PYZ-00.toc -Raw
-          foreach ($modul in "google.protobuf", "transformers.utils.sentencepiece_model_pb2", "gliner", "llama_cpp", "core.handschrift") {
+          foreach ($modul in "google.protobuf", "transformers.utils.sentencepiece_model_pb2", "gliner", "llama_cpp", "core.handschrift", "core.namensabgleich") {
             if (-not $pyz.Contains("'$modul'")) { throw "Fehlt im Erkennungsdienst: $modul" }
           }
 

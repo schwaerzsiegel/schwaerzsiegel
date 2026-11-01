@@ -56,7 +56,8 @@ STREET = (rf"(?:(?:{_STREET_PREFIX})?[{_UPPER}][\w\-]*?(?:straße|strasse|[sS]tr
           r"|chaussee|steig|pfad|koppel|kamp|redder|twiete|stieg|hörn|deich|wall|markt|busch|winkel|brook|moor|kai)"
           rf"|{_STREET_PREFIX}{_STREET_WORD}"
           rf"|(?:Am|An der|An den|Im|In der|Auf dem|Auf der|Zum|Zur|Unter den) [{_UPPER}][{_LOWER}]+)"
-          r" \d{1,4} ?[a-zA-Z]?(?![\w])")
+          # Phase 19: eine Hausnummer hat keine Nachkommastelle ("Im Referat 3.1", "Am Standort 2.14")
+          r" \d{1,4} ?[a-zA-Z]?(?![\w])(?!\.\d)")
 PLZ_CITY = rf"(?<![\d\w])\d{{5}} {CITY}"
 PHONE_VALUE = r"(?:\+|\(?0)[\d ()/.\-]{4,}\d"
 UNLABELED_PHONE = (r"(?<![\w.+/\-])(?:(?:\+49 ?(?:\(0\) ?)?\d{2,5}|\(0\d{2,5}\)|0\d{2,5})"
@@ -111,6 +112,7 @@ class ContextRule:
     colon: bool = False  # Doppelpunkt nach der Beschriftung zwingend
     filler: bool = True  # bis zu 4 Wörter zwischen Beschriftung und ":" erlaubt
     note: str = ""       # Zusatz zur Begründung (z.B. "Format unbekannt")
+    newline: bool = False  # Phase 19: Wert darf in der nächsten Zeile stehen (umbrochene Tabellenzelle)
 
 
 def _has_digits(n: int) -> Callable[[str], bool]:
@@ -125,7 +127,7 @@ CONTEXT_RULES = [
     ContextRule("Personalnummer",
                 r"Personal-?(?:nummer|nr\.?|kennziffer|-?ID)|Pers\.? ?-? ?Nr\.?|P-?Nr\.|Mitarbeiter-?(?:ID|nummer|nr\.?|kennung)"
                 r"|MA-?(?:Nr\.?|Nummer|ID)|Dienstnummer|Personalkennung",
-                r"[A-Z]{0,3}-?\d[\dA-Z\-/]{2,14}(?: \d{2,6}(?![\d.,]))?", _has_digits(3)),
+                r"[A-Z]{0,3}-?\d[\dA-Z\-/]{2,14}(?: \d{2,6}(?![\d.,]))?", _has_digits(3), newline=True),
     # Bis zu drei kleingeschriebene Füllwörter: "Handynummer bleibt 0171 …",
     # "Tel. privat 030 …". Der Wert muss mit + oder 0 beginnen.
     ContextRule("Telefonnummer",
@@ -170,19 +172,25 @@ CONTEXT_RULES = [
                 NAME, colon=True, filler=False),
     ContextRule("Person", r"Herrn?|Frau|Hr\.|Fr\.", rf"(?:(?:Dr\.|Prof\.) )*{NAME}", confidence=0.9, filler=False),
     ContextRule("Person", r"geb\.|geborene[rn]?", NAME, confidence=0.85, filler=False),  # Geburtsname
+    # Phase 19: Zeichnung im Auftrag/in Vertretung ("gez. Hansen", "i. A. Dr. Möller")
+    ContextRule("Person", r"gez\.|i\. ?A\.|i\. ?V\.|ppa\.", rf"(?:(?:Dr\.|Prof\.) )*{NAME}",
+                confidence=0.9, filler=False),
     # Phase 17: Praxis/Kanzlei mit vollem Personennamen ("Praxis Dr. Erika Mustermann") - ohne KI-Modell
     ContextRule("Person", r"Praxis|Kanzlei|Büro|Steuerbüro|Ingenieurbüro|Architekturbüro",
                 rf"(?:(?:Dr\.|Prof\.)(?: (?:med|jur|rer\. nat|dent)\.)? )*{NAME_WORD} {NAME_WORD}",
                 confidence=0.85, filler=False),
     ContextRule("Adresse",
-                r"Anschrift|Adresse|Wohnanschrift|Postanschrift|Wohnort|wohnhaft(?: in)?|Lieferadresse"
-                r"|Rechnungsadresse|Straße|PLZ ?/ ?Ort",
+                r"Anschrift|Adresse|Wohnanschrift|Postanschrift|Lieferadresse|Rechnungsadresse|Straße|PLZ ?/ ?Ort",
                 # Phase 5: mit PLZ + Ort endet die Anschrift dort - sonst lief
                 # der Wert bis zum Zeilenende ("…, 12345 Ort. Bitte melden …")
                 rf"[^\n]*?\d{{5}} {CITY}|{REST_OF_LINE}", confidence=0.9, filler=False,
                 # Phase 18b: eine Anschrift beginnt mit Großbuchstabe oder Ziffer – sonst Fließtext
-                # („Änderungen Ihrer Anschrift umgehend mit.“)
-                validator=lambda s: s[:1].isupper() or s[:1].isdigit()),
+                # („Änderungen Ihrer Anschrift umgehend mit.“). Phase 19: und enthält eine Hausnummer oder
+                # Postleitzahl – sonst Tabellenkopf („Anschrift | Kontakt | Status“)
+                validator=lambda s: (s[:1].isupper() or s[:1].isdigit()) and any(c.isdigit() for c in s)),
+    # Wohnort: auch nur der Ort ("wohnhaft in Kiel")
+    ContextRule("Adresse", r"Wohnort|wohnhaft(?: in)?", rf"[^\n]*?\d{{5}} {CITY}|{REST_OF_LINE}",
+                confidence=0.9, filler=False, validator=lambda s: s[:1].isupper() or s[:1].isdigit()),
     ContextRule("Gesundheitsdaten",
                 r"Diagnosen?|Befunde?|Erkrankung(?:en)?|Krankheit(?:en)?|Vorerkrankung(?:en)?|Medikation|Medikamente?"
                 r"|Therapie|Behinderung|GdB|Allergien?|Beschwerden|Anamnese|ICD(?:-10)?"
@@ -211,6 +219,8 @@ def _compile(rule: ContextRule) -> list[re.Pattern]:
     # ("Konto" in "Kontoinhaber", "Tel" in "Telefonzentrale").
     label = rf"(?<![\w\-])(?P<label>(?i:{rule.keywords}))(?![{_LOWER}]){_REMARK}"
     sep = r" ?: ?" if rule.colon else r"(?: ?[:#] ?| )?"
+    if rule.newline:
+        sep = rf"(?:[ :#]*\n|{sep})"
     patterns = [re.compile(rf"(?m){label}{sep}(?P<value>{rule.value})")]
     if rule.filler:
         patterns.append(re.compile(rf"(?m){label}(?: [^\s:]+){{1,4}} ?: ?(?P<value>{rule.value})"))
@@ -450,6 +460,11 @@ def structure_and_format_hits(text: str) -> list[Hit]:
                     continue
                 line_start, line_end = _line_of(text, m.start())
                 prefix = text[line_start:m.start()]
+                if not prefix.strip() and line_start > 0:
+                    # Phase 19: Wert am Zeilenanfang – die Beschriftung steht oft am Ende der Zeile davor
+                    # (Tabellenzelle umbrochen: "Pers.-Nr." / "004-12345")
+                    prev_start, _ = _line_of(text, line_start - 1)
+                    prefix = text[prev_start:line_start - 1].rsplit(" ", 1)[-1] + " " + prefix
                 hit = Hit(label, m.start(), m.end(), confidence, priority, reason)
                 if label == "Telefonnummer" and _VETO_FOR_FORMAT.search(prefix) and not _PHONE_HINT.search(prefix):
                     continue  # die Zeile beschreibt eine andere Kennung

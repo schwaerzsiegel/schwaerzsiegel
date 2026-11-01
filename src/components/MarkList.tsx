@@ -10,7 +10,10 @@ import {
   isMinor,
   isUnsure,
   minorSummary,
+  personGroups,
+  samePersonMarks,
   sameValueMarks,
+  type PersonGroup,
 } from "../lib/markLabels";
 import { Icon } from "./Icon";
 
@@ -60,6 +63,9 @@ export function MarkList({ marks, currentPage, selectedId, hoveredId, disabled, 
   const [customLabel, setCustomLabel] = useState<{ id: string; value: string } | null>(null);
   // Phase 16: nicht zur Schwärzung vorgesehene Vorschläge (Organisationen, Daten …) zunächst eingeklappt
   const [showMinor, setShowMinor] = useState(false);
+  // Phase 20: Personen im Dokument – je Person alle Stellen schwärzen oder auslassen
+  const [showPersons, setShowPersons] = useState(true);
+  const persons = useMemo(() => personGroups(marks), [marks]);
 
   const minorApplies = filter === "all" || filter === "suggested" || filter === "unsure";
   const inScope = marks.filter((m) => matches(m, filter) && (!onlyThisPage || m.page === currentPage));
@@ -83,6 +89,16 @@ export function MarkList({ marks, currentPage, selectedId, hoveredId, disabled, 
 
   // Gleicher Text im ganzen Dokument: eine Entscheidung für alle gleichen Werte (Phase 16, vorher je Seite)
   const sameText = (m: Mark) => sameValueMarks(marks, m);
+  const toRedact = (ms: Mark[]) => ms.filter((x) => x.status !== "confirmed" && x.status !== "redacted");
+  const toSkip = (ms: Mark[]) => ms.filter((x) => x.status !== "rejected");
+  const personState = (g: PersonGroup) =>
+    g.rejected === g.marks.length
+      ? "ausgelassen"
+      : g.confirmed === g.marks.length
+        ? "wird geschwärzt"
+        : [g.open && `${g.open} offen`, g.confirmed && `${g.confirmed} bestätigt`, g.rejected && `${g.rejected} ausgelassen`]
+            .filter(Boolean)
+            .join(", ");
 
   return (
     <>
@@ -134,6 +150,51 @@ export function MarkList({ marks, currentPage, selectedId, hoveredId, disabled, 
         {marks.length > 0 && visible.length === 0 && minor.length === 0 && (
           <p className="mark-empty">Keine Fundstellen für diesen Filter.</p>
         )}
+        {persons.length > 0 && (
+          <div className="persons-box" data-testid="persons-box">
+            <button className="persons-head" onClick={() => setShowPersons(!showPersons)} aria-expanded={showPersons}>
+              <span>
+                <strong>Personen im Dokument</strong> · {persons.length}
+              </span>
+              <span className="persons-toggle">{showPersons ? "Ausblenden" : "Anzeigen"}</span>
+            </button>
+            {showPersons && (
+              <>
+                <p className="minor-text">Je Person alle Stellen auf einmal schwärzen oder von der Schwärzung auslassen.</p>
+                <ul className="persons-list">
+                  {persons.map((g) => (
+                    <li key={g.key} className={`person-row ${g.rejected === g.marks.length ? "is-skipped" : ""}`}>
+                      <button className="person-name" onClick={() => onFocus(g.marks[0])} title="Erste Stelle auf der Seite zeigen">
+                        <span className="person-title">{g.name}</span>
+                        <span className="person-meta">
+                          {g.marks.length} {g.marks.length === 1 ? "Stelle" : "Stellen"} · {personState(g)}
+                        </span>
+                      </button>
+                      <span className="person-actions">
+                        <button
+                          className="btn btn-small"
+                          disabled={disabled || toRedact(g.marks).length === 0}
+                          onClick={() => onStatus(toRedact(g.marks), "confirmed")}
+                          title={`Alle ${g.marks.length} Stellen von ${g.name} bestätigen – sie werden geschwärzt`}
+                        >
+                          Schwärzen
+                        </button>
+                        <button
+                          className="btn btn-small"
+                          disabled={disabled || toSkip(g.marks).length === 0}
+                          onClick={() => onStatus(toSkip(g.marks), "rejected")}
+                          title={`Alle ${g.marks.length} Stellen von ${g.name} verwerfen – sie bleiben sichtbar`}
+                        >
+                          Auslassen
+                        </button>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        )}
         {minor.length > 0 && (
           <div className="minor-box" data-testid="minor-box">
             <p className="minor-text">
@@ -161,6 +222,7 @@ export function MarkList({ marks, currentPage, selectedId, hoveredId, disabled, 
             <h3 className={`mark-group-title ${page === currentPage ? "is-current" : ""}`}>Seite {page + 1}</h3>
             {items.map((m) => {
               const same = sameText(m);
+              const person = samePersonMarks(marks, m);
               const known = CATEGORIES.includes(m.label);
               const editingLabel = customLabel?.id === m.id;
               const unsure = isUnsure(m);
@@ -261,14 +323,47 @@ export function MarkList({ marks, currentPage, selectedId, hoveredId, disabled, 
                     </div>
                   </div>
 
-                  {same.length > 1 && m.status === "suggested" && (
-                    <button
-                      className="text-link"
-                      disabled={disabled}
-                      onClick={() => onStatus(same.filter((x) => x.status === "suggested"), "confirmed")}
-                    >
-                      Alle {same.length} gleichen Werte im Dokument bestätigen
-                    </button>
+                  {person && person.marks.length > 1 ? (
+                    <span className="bulk-row">
+                      Alle {person.marks.length} Stellen von {person.name}:{" "}
+                      <button
+                        className="text-link"
+                        disabled={disabled || toRedact(person.marks).length === 0}
+                        onClick={() => onStatus(toRedact(person.marks), "confirmed")}
+                      >
+                        bestätigen
+                      </button>{" "}
+                      ·{" "}
+                      <button
+                        className="text-link"
+                        disabled={disabled || toSkip(person.marks).length === 0}
+                        onClick={() => onStatus(toSkip(person.marks), "rejected")}
+                      >
+                        auslassen
+                      </button>
+                    </span>
+                  ) : (
+                    !person &&
+                    same.length > 1 && (
+                      <span className="bulk-row">
+                        Alle {same.length} gleichen Werte im Dokument:{" "}
+                        <button
+                          className="text-link"
+                          disabled={disabled || toRedact(same).length === 0}
+                          onClick={() => onStatus(toRedact(same), "confirmed")}
+                        >
+                          bestätigen
+                        </button>{" "}
+                        ·{" "}
+                        <button
+                          className="text-link"
+                          disabled={disabled || toSkip(same).length === 0}
+                          onClick={() => onStatus(toSkip(same), "rejected")}
+                        >
+                          verwerfen
+                        </button>
+                      </span>
+                    )
                   )}
                 </article>
               );
